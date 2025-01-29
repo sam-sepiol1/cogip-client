@@ -33,7 +33,7 @@ export default function Last_invoices() {
 			<h3 className="text-3xl font-bold mb-16"> Last Companies</h3>
 			<table className="table-auto w-full" >
 				<thead className="text-2xl font-bold text-left">
-					<tr className='bg-[#F9DE4E]'>
+					<tr className='background-yellow'>
 						<th className="p-4">Name</th>
 						<th className="p-4">TVA</th>
 						<th className="p-4">Country</th>
