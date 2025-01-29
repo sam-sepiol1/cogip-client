@@ -12,7 +12,7 @@ export default function Home_header() {
 					<nav className='content-center'>
 						<ul className='flex flex-row gap-4 '>
 							<li className={`hover:border border-black p-2 ${pathname === '/' ? 'border border-black' : ''}`}>
-								<a href='/home'>Home</a>
+								<a href='/'>Home</a>
 							</li>
 							<li className={`hover:border border-black p-2 ${pathname === '/invoices' ? 'border border-black' : ''}`}>
 								<a href='/invoices'>Invoice</a>
