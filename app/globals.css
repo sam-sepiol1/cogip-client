@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,13 +7,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
+  --color-footer-logo: #434138;
+  --color-footer-nav: #0A142F;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-footer-logo: 'Roboto', sans-serif;
 }
 
 body {
@@ -19,3 +18,4 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
