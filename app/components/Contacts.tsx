@@ -1,4 +1,4 @@
-export default function Last_invoices() {
+export default function Contacts() {
     // Mock data for the table
     // TODO : Delete this when backend is ready and connected
     const testData = [
