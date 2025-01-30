@@ -26,7 +26,6 @@ export default function Last_invoices() {
             company: "Dunder Mifflin",
             created: "2023-12-30"
         }
-
     ]
 
 	return (

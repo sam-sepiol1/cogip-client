@@ -23,7 +23,6 @@ export default function Last_invoices() {
             dueDates: "2023-12-30",
             created: "2023-12-30"
         }
-
     ]
 
 	return (
