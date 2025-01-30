@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,10 +7,28 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --jaune: #F9DE4E;
+  --footer-color-logo: #434138;
+  --footer-color-nav: #0A142F;
+  --footer-size-footer-nav: 14px;
+  --footer-weight-nav: 400;
+  --footer-line-height-nav: 18.31px;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer-nav {
+  font-family: 'Assistant', sans-serif;
+  font-size: var(--footer-size-footer-nav);
+  font-weight: var(--footer-weight-nav);
+  line-height: var(--footer-line-height-nav);
+  color: var(--footer-color-nav);
+}
+
+.footer-logo {
+  font-family: "Roboto", sans-serif;
 }
