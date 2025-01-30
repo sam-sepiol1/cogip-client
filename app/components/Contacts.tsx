@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import SearchBar from "../components/Search_bar";
+import "../globals.css";
 
 export default function Contacts() {
     // Mock data for the table
@@ -56,7 +57,7 @@ export default function Contacts() {
 
     return (
         <main className="px-20 mt-20">
-            <h3 className="relative text-6xl font-bold mb-6 before:block before:bg-[#F9DE4E] before:w-[281] h-[27] before:h-full before:absolute before:top-[30] before:left-0 before:-z-10">
+            <h3 className="relative title text-6xl font-bold mb-6 before:block before:bg-[#F9DE4E] before:w-[281] h-[27] before:h-full before:absolute before:top-[40] before:left-[145] before:-z-10">
                 All contacts
             </h3>
             <SearchBar placeholder="Search contact..." onSearch={handleSearch}/>
@@ -84,7 +85,7 @@ export default function Contacts() {
                     ))
                 ) : (
                     <tr>
-                        <td colSpan="5" className="p-4 text-center text-gray-500">
+                        <td colSpan={5} className="p-4 text-center text-gray-500">
                             Aucun contact trouvé.
                         </td>
                     </tr>
