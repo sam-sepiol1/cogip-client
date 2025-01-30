@@ -15,6 +15,7 @@ export default function Footer() {
                     style={{borderColor: "#F9DE4E"}}>
                     COGIP
                 </h2>
+
                 <div className="w-[460px] h-[128px] flex flex-col items-start mt-6 text-left">
                     <div className="flex items-center space-x-2">
                         <Image src="/Footer/round-place-24px.png" alt="Location" width={24} height={24}
@@ -23,15 +24,21 @@ export default function Footer() {
                             Square des Martyrs, 6000 Charleroi
                         </p>
                     </div>
-                    <div className="flex items-center mt-2 space-x-2">
-                        <Image src="/Footer/round-phone-24px.png" alt="Phone" width={24} height={24}
-                               className="shrink-0"/>
-                        <p className="footer-nav">(123) 456-7890</p>
-                        <div className="mx-[60px]"></div>
-                        <Image src="/Footer/round-local-printshop-24px.png" alt="Fax" width={24} height={24}
-                               className="shrink-0"/>
-                        <p className="footer-nav">(123) 456-7890</p>
+
+                    <div className="flex items-center mt-2 space-x-20">
+                        <div className="flex self-start space-x-2">
+                            <Image src="/Footer/round-phone-24px.png" alt="Phone" width={24} height={24}
+                                   className="shrink-0"/>
+                            <p className="footer-nav">(123) 456-7890</p>
+                        </div>
+
+                        <div className="flex self-end space-x-2">
+                            <Image src="/Footer/round-local-printshop-24px.png" alt="Fax" width={24} height={24}
+                                   className="shrink-0"/>
+                            <p className="footer-nav">(123) 456-7890</p>
+                        </div>
                     </div>
+
                     <div className="flex items-center ml-1 mt-4 space-x-5">
                         <p className="footer-nav text-[#434138] mt-2">Social Media</p>
                         <Image src="/Footer/facebook%20black.1.png" alt="Facebook" width={24} height={24}
@@ -49,8 +56,11 @@ export default function Footer() {
                                className="shrink-0"/>
                         <Image src="/Footer/rss%20black.1.png" alt="RSS" width={24} height={24} className="shrink-0"/>
                     </div>
+
                 </div>
+
             </div>
+
             <div className="w-full h-[1px] bg-[#7BB9FC] mt-2"></div>
             <div className="w-full flex justify-between items-center mt-6">
                 <nav>
@@ -70,9 +80,11 @@ export default function Footer() {
                         <li className="footer-nav text-[#0A142F]">PRIVACY POLICY</li>
                     </ul>
                 </nav>
+
                 <div className="footer-nav self-end ml-auto">
                     Copyright © {new Date().getFullYear()} • COGIP Inc.
                 </div>
+
             </div>
         </footer>
     );
