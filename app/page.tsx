@@ -1,3 +1,4 @@
+import Footer from "@/app/components/Footer";
 import Home_header from "./components/Home_header";
 import Invoices from "./components/Invoices";
 import Contacts from "./components/Contacts";
@@ -12,6 +13,7 @@ export default function Home() {
       <Contacts />
       <Companies />
       <Home_slogan />
+      <Footer />
     </main>
   );
 }
