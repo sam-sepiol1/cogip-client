@@ -3,6 +3,7 @@ import { useState } from "react";
 interface SearchBarProps {
     onSearch: (query: string) => void;
     placeholder?: string;
+    className?: string;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch, placeholder }) => {
@@ -20,7 +21,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, placeholder }) => {
             value={query}
             onChange={handleSearch}
             placeholder={placeholder || "Search..."}
-            className="border border-[#636363] rounded-lg w-[245] h-[53] shadow-sm"
+            className="border border-[#636363] rounded-[10px] w-[245px] h-[53px] shadow-sm pl-4"
         />
     );
 };
