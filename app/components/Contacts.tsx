@@ -15,7 +15,7 @@ export default function Contacts() {
             phone: "123-456-7890",
             mail: "samespiol@example.com",
             company: "fSociety",
-            created: "2023-12-30"
+            created: "14/02/2022"
         },
         {
             id: 2,
@@ -23,7 +23,7 @@ export default function Contacts() {
             phone: "987-654-3210",
             mail: "walterwhite@example.com",
             company: "Heisenberg",
-            created: "2023-12-30"
+            created: "25/09/2020"
         },
         {
             id: 3,
@@ -31,11 +31,12 @@ export default function Contacts() {
             phone: "555-123-4567",
             mail: "michaelscott@example.com",
             company: "Dunder Mifflin",
-            created: "2023-12-30"
+            created: "02/12/2024"
         }
     ];
 
     const [filteredData, setFilteredData] = useState(testData);
+    const [sortConfig, setSortConfig] = useState({ key: '', direction: '' });
 
     const handleSearch = (query: string) => {
         if (!query) {
@@ -55,23 +56,59 @@ export default function Contacts() {
         setFilteredData(filtered);
     };
 
+    const handleSort = (key) => {
+        let direction = "ascending";
+        if (sortConfig.key === key && sortConfig.direction === "ascending") {
+            direction = "descending";
+        }
+
+        const sortedData = [...filteredData].sort((a, b) => {
+            if (key === "created") {
+                const dateA = new Date(a[key].split("/").reverse().join("-"));
+                const dateB = new Date(b[key].split("/").reverse().join("-"));
+
+                return direction === "ascending" ? dateA - dateB : dateB - dateA;
+            } else {
+                return direction === "ascending"
+                    ? a[key].localeCompare(b[key])
+                    : b[key].localeCompare(a[key]);
+            }
+        });
+
+        setFilteredData(sortedData);
+        setSortConfig({ key, direction });
+    };
+
+    const renderSortIcon = (key) => {
+        if (sortConfig.key === key) {
+            return sortConfig.direction === "ascending" ? "▲" : "▼";
+        }
+        return "▼";
+    };
+
     return (
         <main className="px-20 mt-20">
-            <div className="flex flex-col justify-between pl-5 pr-5 h-[150px]">
+            <div className="px-5 mt-20 grid grid-cols-2 items-center">
                 <h3 className="titlePage title">
                     All contacts
                 </h3>
-                <SearchBar placeholder="Search contact" onSearch={handleSearch}/>
+                <div className="justify-self-end mt-[20px]">
+                    <SearchBar placeholder="Search contact" onSearch={handleSearch}/>
+                </div>
             </div>
 
             <table className="table-auto w-full mt-20">
                 <thead className="titleTable">
-                <tr className='background-yellow'>
-                    <th className="p-4">Name</th>
+                <tr className="background-yellow">
+                    <th className="p-4 cursor-pointer" onClick={() => handleSort("name")}>
+                        Name {renderSortIcon("name")}
+                    </th>
                     <th className="p-4">Phone</th>
                     <th className="p-4">Mail</th>
                     <th className="p-4">Company</th>
-                    <th className="p-4">Created</th>
+                    <th className="p-4 cursor-pointer" onClick={() => handleSort("created")}>
+                        Created {renderSortIcon("created")}
+                    </th>
                 </tr>
                 </thead>
                 <tbody className="fontDataTable">
@@ -88,7 +125,7 @@ export default function Contacts() {
                 ) : (
                     <tr>
                         <td colSpan={5} className="p-4 text-center text-gray-500">
-                            Aucun contact trouvé.
+                            No contact found.
                         </td>
                     </tr>
                 )}
