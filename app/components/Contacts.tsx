@@ -4,6 +4,20 @@ import { useState } from "react";
 import SearchBar from "../components/Search_bar";
 import "../globals.css";
 
+interface SortConfig {
+    key: string;
+    direction: "ascending" | "descending";
+}
+
+interface Contact {
+    id: number;
+    name: string;
+    phone: string;
+    mail: string;
+    company: string;
+    created: string;
+}
+
 export default function Contacts() {
     // Mock data for the table
     // TODO : Delete this when backend is ready and connected
@@ -35,8 +49,8 @@ export default function Contacts() {
         }
     ];
 
-    const [filteredData, setFilteredData] = useState(testData);
-    const [sortConfig, setSortConfig] = useState({ key: '', direction: '' });
+    const [filteredData, setFilteredData] = useState<Contact[]>(testData);
+    const [sortConfig, setSortConfig] = useState<SortConfig>({key: "",direction: "ascending",});
 
     const handleSearch = (query: string) => {
         if (!query) {
@@ -56,22 +70,24 @@ export default function Contacts() {
         setFilteredData(filtered);
     };
 
-    const handleSort = (key) => {
-        let direction = "ascending";
+    const handleSort = (key: keyof Contact) => {
+        let direction: "ascending" | "descending" = "ascending";
         if (sortConfig.key === key && sortConfig.direction === "ascending") {
             direction = "descending";
         }
 
         const sortedData = [...filteredData].sort((a, b) => {
             if (key === "created") {
-                const dateA = new Date(a[key].split("/").reverse().join("-"));
-                const dateB = new Date(b[key].split("/").reverse().join("-"));
+                if (!a[key] || !b[key]) return 0;
+                const dateA = new Date(String(a[key]).split("/").reverse().join("-"));
+                const dateB = new Date(String(b[key]).split("/").reverse().join("-"));
 
-                return direction === "ascending" ? dateA - dateB : dateB - dateA;
+                return direction === "ascending" ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime();
             } else {
+                // 🔹 Type assertion : Assurer que la valeur est bien une chaîne de caractères
                 return direction === "ascending"
-                    ? a[key].localeCompare(b[key])
-                    : b[key].localeCompare(a[key]);
+                    ? String(a[key]).localeCompare(String(b[key]))
+                    : String(b[key]).localeCompare(String(a[key]));
             }
         });
 
@@ -79,7 +95,7 @@ export default function Contacts() {
         setSortConfig({ key, direction });
     };
 
-    const renderSortIcon = (key) => {
+    const renderSortIcon = (key: keyof Contact) => {
         if (sortConfig.key === key) {
             return sortConfig.direction === "ascending" ? "▲" : "▼";
         }
