@@ -7,7 +7,7 @@ export default function ShowContacts() {
 		email: 'samsepiol@example.com',
 		phone: '123-456-7890',
 		company: 'fSociety',
-		profilePicture: 'https://i.pravatar.cc',
+		profilePicture: '/show-contacts_profile-picture.png',
 	};
 
 	return (
