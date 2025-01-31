@@ -38,6 +38,10 @@ body {
 
 .footer-logo {
   font-family: "Roboto", sans-serif;
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 56.25px;
+  color: #434138;
 }
 
 .titlePage {
