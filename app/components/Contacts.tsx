@@ -57,12 +57,14 @@ export default function Contacts() {
 
     return (
         <main className="px-20 mt-20">
+            <div className="flex justify-between items-center">
             <h3 className="relative title text-6xl font-bold mb-6 before:block before:bg-[#F9DE4E] before:w-[281] h-[27] before:h-full before:absolute before:top-[40] before:left-[145] before:-z-10">
                 All contacts
             </h3>
             <SearchBar placeholder="Search contact..." onSearch={handleSearch}/>
+            </div>
 
-            <table className="table-auto w-full mt-6">
+            <table className="table-auto w-full mt-20">
                 <thead className="text-2xl font-bold text-left">
                 <tr className='background-yellow'>
                     <th className="p-4">Name</th>
