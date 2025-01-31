@@ -28,6 +28,14 @@ body {
   background-color: #F9DE4E;
 }
 
+.font-nav-header {
+  font-family: Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 23.44px;
+  text-align: left;
+}
+
 .footer-nav {
   font-family: 'Assistant', sans-serif;
   font-size: var(--footer-size-footer-nav);
