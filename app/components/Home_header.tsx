@@ -25,7 +25,7 @@ export default function Home_header() {
 							</li>
 						</ul>
 					</nav>
-					<div className='flex flex-row gap-4 ml-auto'>
+					<div className='font-nav-header flex flex-row gap-4 ml-auto'>
 						<button className='bg-white px-3 py-1 rounded-xl'> Sign Up</button>
 						<button> Login </button>
 					</div>
