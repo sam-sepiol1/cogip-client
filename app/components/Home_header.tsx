@@ -32,9 +32,11 @@ export default function Home_header() {
 					</div>
 				</header>
 				<div className='hero-section flex flex-row justify-center items-center'>
-					<h1 className='font-title-slogan flex p-20 flex-1 uppercase'>Manage your customers and invoices easily</h1>
+					<h1 className='font-title-slogan flex p-20 flex-1 uppercase w-[595px] text-center leading-tight text-wrap'>
+						Manage your customers and invoices easily
+					</h1>
 					<picture className='flex-1'>
-						<img src='/Home_Header/hero-section_illustration.svg' alt='illustration' />
+						<img src='/Home_Header/hero-section_illustration.svg' alt='illustration'/>
 					</picture>
 				</div>
 			</div>
