@@ -8,14 +8,14 @@ export default function Home_header() {
 		<main>
 			<div className=' bg-[url("/Home_Header/background.svg")] bg-cover bg-no-repeat'>
 				<header className='flex gap-10 p-20 size-auto '>
-					<h2 className='text-3xl font-bold'> COGIP </h2>
+					<h2 className='font-logo'> COGIP </h2>
 					<nav className='content-center'>
 						<ul className='flex flex-row gap-4 '>
 							<li className={`hover:border border-black p-2 ${pathname === '/' ? 'border border-black' : ''}`}>
 								<a href='/'>Home</a>
 							</li>
 							<li className={`hover:border border-black p-2 ${pathname === '/invoices' ? 'border border-black' : ''}`}>
-								<a href='/invoices'>Invoice</a>
+								<a href='/invoices'>Invoices</a>
 							</li>
 							<li className={`hover:border border-black p-2 ${pathname === '/companies' ? 'border border-black' : ''}`}>
 								<a href='/companies'>Companies</a>
