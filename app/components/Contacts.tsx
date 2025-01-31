@@ -57,15 +57,15 @@ export default function Contacts() {
 
     return (
         <main className="px-20 mt-20">
-            <div className="flex justify-between items-center">
-            <h3 className="relative title text-6xl font-bold mb-6 before:block before:bg-[#F9DE4E] before:w-[281] h-[27] before:h-full before:absolute before:top-[40] before:left-[145] before:-z-10">
-                All contacts
-            </h3>
-            <SearchBar placeholder="Search contact..." onSearch={handleSearch}/>
+            <div className="flex flex-col justify-between pl-5 pr-5 h-[150px]">
+                <h3 className="titlePage title">
+                    All contacts
+                </h3>
+                <SearchBar placeholder="Search contact" onSearch={handleSearch}/>
             </div>
 
             <table className="table-auto w-full mt-20">
-                <thead className="text-2xl font-bold text-left">
+                <thead className="titleTable">
                 <tr className='background-yellow'>
                     <th className="p-4">Name</th>
                     <th className="p-4">Phone</th>
@@ -74,10 +74,10 @@ export default function Contacts() {
                     <th className="p-4">Created</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody className="fontDataTable">
                 {filteredData.length > 0 ? (
-                    filteredData.map((contact) => (
-                        <tr key={contact.id}>
+                    filteredData.map((contact, index) => (
+                        <tr key={contact.id} className={index % 2 === 0 ? "bg-white" : "bg-[#F5F5F5]"}>
                             <td className="p-4">{contact.name}</td>
                             <td className="p-4">{contact.phone}</td>
                             <td className="p-4">{contact.mail}</td>
