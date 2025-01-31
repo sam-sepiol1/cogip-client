@@ -84,7 +84,7 @@ export default function Contacts() {
 
                 return direction === "ascending" ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime();
             } else {
-                // 🔹 Type assertion : Assurer que la valeur est bien une chaîne de caractères
+
                 return direction === "ascending"
                     ? String(a[key]).localeCompare(String(b[key]))
                     : String(b[key]).localeCompare(String(a[key]));
