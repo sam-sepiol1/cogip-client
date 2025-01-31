@@ -34,10 +34,11 @@ body {
   font-weight: 600;
   line-height: 23.44px;
   text-align: left;
+  color:#000000;
 }
 
 .footer-nav {
-  font-family: 'Assistant', sans-serif;
+  font-family: Assistant, sans-serif;
   font-size: var(--footer-size-footer-nav);
   font-weight: var(--footer-weight-nav);
   line-height: var(--footer-line-height-nav);
@@ -45,7 +46,7 @@ body {
 }
 
 .font-logo {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 48px;
   font-weight: 900;
   line-height: 56.25px;
@@ -53,7 +54,7 @@ body {
 }
 
 .titlePage {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 60px;
   font-weight: 900;
   line-height: 72.61px;
@@ -75,7 +76,7 @@ body {
 }
 
 .titleTable {
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 23.44px;
@@ -83,7 +84,7 @@ body {
 }
 
 .fontDataTable {
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 23.44px;
@@ -91,5 +92,5 @@ body {
 }
 
 .contact-card_info {
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
 }
