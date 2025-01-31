@@ -81,3 +81,7 @@ body {
   line-height: 23.44px;
   text-align: left;
 }
+
+.contact-card_info {
+  font-family: 'Roboto', sans-serif;
+}
