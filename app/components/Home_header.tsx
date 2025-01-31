@@ -25,13 +25,14 @@ export default function Home_header() {
 							</li>
 						</ul>
 					</nav>
-					<div className='font-nav-header flex flex-row gap-4 ml-auto'>
-						<button className='bg-white px-3 py-1 rounded-xl'> Sign Up</button>
-						<button> Login </button>
+					<div className='font-nav-header flex flex-row gap-5 ml-auto'>
+						<button
+							className="bg-white w-[102px] h-[37px] rounded-[10px] mt-2">Sign up</button>
+						<button>Login</button>
 					</div>
 				</header>
 				<div className='hero-section flex flex-row justify-center items-center'>
-					<h1 className='text-5xl font-bold flex p-20 flex-1 uppercase'>Manage your customers and invoices easily</h1>
+					<h1 className='font-title-slogan flex p-20 flex-1 uppercase'>Manage your customers and invoices easily</h1>
 					<picture className='flex-1'>
 						<img src='/Home_Header/hero-section_illustration.svg' alt='illustration' />
 					</picture>
