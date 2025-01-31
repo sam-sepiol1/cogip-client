@@ -87,17 +87,17 @@ export default function Contacts() {
     };
 
     return (
-        <main className="px-20 mt-20">
-            <div className="px-5 mt-20 grid grid-cols-2 items-center">
+        <main className="px-20 mt-10">
+            <div className="px-5 mt-10 grid grid-cols-2 items-center">
                 <h3 className="titlePage title">
                     All contacts
                 </h3>
-                <div className="justify-self-end mt-[20px]">
+                <div className="justify-self-end mt-[90px]">
                     <SearchBar placeholder="Search contact" onSearch={handleSearch}/>
                 </div>
             </div>
 
-            <table className="table-auto w-full mt-20">
+            <table className="table-auto w-full mt-10">
                 <thead className="titleTable">
                 <tr className="background-yellow">
                     <th className="p-4 cursor-pointer" onClick={() => handleSort("name")}>
@@ -107,7 +107,7 @@ export default function Contacts() {
                     <th className="p-4">Mail</th>
                     <th className="p-4">Company</th>
                     <th className="p-4 cursor-pointer" onClick={() => handleSort("created")}>
-                        Created {renderSortIcon("created")}
+                        Created at {renderSortIcon("created")}
                     </th>
                 </tr>
                 </thead>
