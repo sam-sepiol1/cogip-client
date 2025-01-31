@@ -20,9 +20,7 @@ export default function Footer() {
                     <div className="flex items-center space-x-2">
                         <Image src="/Footer/round-place-24px.png" alt="Location" width={24} height={24}
                                className="shrink-0"/>
-                        <p className="footer-nav text-[#434138] mb-2">
-                            Square des Martyrs, 6000 Charleroi
-                        </p>
+                        <p className="footer-nav text-[#434138] mb-2">Square des Martyrs, 6000 Charleroi</p>
                     </div>
 
                     <div className="flex items-center mt-2 space-x-20">
