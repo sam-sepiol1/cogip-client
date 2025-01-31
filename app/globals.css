@@ -37,6 +37,14 @@ body {
   color:#000000;
 }
 
+.font-title-slogan {
+  font-family: Inter, sans-serif;
+  font-size: 65px;
+  font-weight: 900;
+  line-height: 78.66px;
+  text-align: left;
+}
+
 .footer-nav {
   font-family: Assistant, sans-serif;
   font-size: var(--footer-size-footer-nav);
