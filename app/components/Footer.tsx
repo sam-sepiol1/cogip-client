@@ -11,7 +11,7 @@ export default function Footer() {
         <footer className="w-[75.76%] mx-auto flex flex-col items-center justify-start mt-[100px] mb-[100px] border-t-2 border-[#F9DE4E]">
             <div className="w-full flex justify-between items-center mt-10">
                 <h2
-                    className="footer-logo border-4 ml-4 px-2 py-0.5 relative top-[-20px]"
+                    className="font-logo border-4 ml-4 px-2 py-0.5 relative top-[-20px]"
                     style={{borderColor: "#F9DE4E"}}>
                     COGIP
                 </h2>
