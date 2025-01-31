@@ -17,17 +17,17 @@ export default function ShowContacts() {
 				<div className='contact-info flex flex-col justify-center'>
 					<h1 className='title text-6xl font-black my-10 '> {testData.name}</h1>
 					<ul>
-						<li className='text-2xl'>
-							<span className='font-extrabold'>Name: </span> {testData.name}
+						<li className='text-2xl contact-card_info font-semibold'>
+							<span className='font-black'>Name: </span> {testData.name}
 						</li>
-						<li className='text-2xl'>
-							<span className='font-extrabold'>Phone: </span> {testData.phone}
+						<li className='text-2xl contact-card_info font-semibold'>
+							<span className='font-black'>Phone: </span> {testData.phone}
 						</li>
-						<li className='text-2xl'>
-							<span className='font-extrabold'>Email: </span> {testData.email}
+						<li className='text-2xl contact-card_info font-semibold'>
+							<span className='font-black'>Email: </span> {testData.email}
 						</li>
-						<li className='text-2xl'>
-							<span className='font-extrabold'>Company: </span> {testData.company}
+						<li className='text-2xl contact-card_info font-semibold'>
+							<span className='font-black'>Company: </span> {testData.company}
 						</li>
 					</ul>
 				</div>
