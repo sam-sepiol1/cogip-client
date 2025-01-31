@@ -10,7 +10,7 @@ export default function Home_header() {
 				<header className='flex gap-10 p-20 size-auto '>
 					<h2 className='font-logo'> COGIP </h2>
 					<nav className='content-center'>
-						<ul className='flex flex-row gap-4 '>
+						<ul className='font-nav-header flex flex-row gap-4 '>
 							<li className={`hover:border border-black p-2 ${pathname === '/' ? 'border border-black' : ''}`}>
 								<a href='/'>Home</a>
 							</li>
@@ -26,7 +26,7 @@ export default function Home_header() {
 						</ul>
 					</nav>
 					<div className='flex flex-row gap-4 ml-auto'>
-						<button className='bg-white px-3 py-1 rounded-xl'> Sign Up </button>
+						<button className='bg-white px-3 py-1 rounded-xl'> Sign Up</button>
 						<button> Login </button>
 					</div>
 				</header>
