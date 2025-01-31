@@ -9,9 +9,9 @@ export default function Footer() {
 
     return (
         <footer className="w-[75.76%] mx-auto flex flex-col items-center justify-start mt-[100px] mb-[100px] border-t-2 border-[#F9DE4E]">
-            <div className="w-full flex justify-between items-center mt-6">
+            <div className="w-full flex justify-between items-center mt-10">
                 <h2
-                    className="footer-logo text-5xl font-bold text-[#434138] border-4 ml-4 px-1.5 py-0.5"
+                    className="footer-logo border-4 ml-4 px-2 py-0.5 relative top-[-20px]"
                     style={{borderColor: "#F9DE4E"}}>
                     COGIP
                 </h2>
@@ -61,7 +61,7 @@ export default function Footer() {
 
             </div>
 
-            <div className="w-full h-[1px] bg-[#7BB9FC] mt-2"></div>
+            <div className="w-full h-[1px] bg-[#7BB9FC] mt-10" ></div>
             <div className="w-full flex justify-between items-center mt-6">
                 <nav>
                     <ul className="flex space-x-6 text-lg font-medium">
