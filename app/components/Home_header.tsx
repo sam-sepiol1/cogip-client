@@ -1,9 +1,9 @@
 "use client";
+
 import { usePathname } from "next/navigation";
 
 export default function Home_header() {
 	const pathname = usePathname();
-
 	return (
 		<main>
 			<div className="bg-[#F9DE4E] bg-cover bg-no-repeat bg-fixed h-[787px] relative overflow-hidden">
