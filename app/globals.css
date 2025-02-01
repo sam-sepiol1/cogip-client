@@ -68,6 +68,15 @@ body {
   color: #434138;
 }
 
+.font-home-slogan {
+  font-family: Inter, sans-serif;
+  font-size: 68px;
+  font-weight: 900;
+  line-height: 82.3px;
+  text-align: left;
+  color: #000000;
+}
+
 .titlePage {
   font-family: Inter, sans-serif;
   font-size: 60px;
