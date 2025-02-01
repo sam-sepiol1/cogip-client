@@ -26,7 +26,7 @@ export default function Contacts() {
         {
             id: 1,
             name: "Sam Sepiol",
-            phone: "123-456-7890",
+            phone: "555-7890",
             mail: "samespiol@example.com",
             company: "fSociety",
             created: "14/02/2022"
@@ -34,7 +34,7 @@ export default function Contacts() {
         {
             id: 2,
             name: "Walter White",
-            phone: "987-654-3210",
+            phone: "555-3210",
             mail: "walterwhite@example.com",
             company: "Heisenberg",
             created: "25/09/2020"
@@ -42,7 +42,7 @@ export default function Contacts() {
         {
             id: 3,
             name: "Michael Scott",
-            phone: "555-123-4567",
+            phone: "555-5567",
             mail: "michaelscott@example.com",
             company: "Dunder Mifflin",
             created: "02/12/2024"
@@ -103,8 +103,8 @@ export default function Contacts() {
     };
 
     return (
-        <main className="px-20 mt-10">
-            <div className="px-5 mt-10 grid grid-cols-2 items-center">
+        <main className="px-[136px]">
+            <div className="px-5 mt-5 grid grid-cols-2 items-center">
                 <h3 className="titlePage title">
                     All contacts
                 </h3>
