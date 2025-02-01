@@ -33,6 +33,11 @@ export default function Home_header() {
 					</div>
 				</header>
 
+				<picture
+					className="absolute top-[676px] left-1/2 translate-x-[-50%] w-[1300px] h-[114px] z-10">
+					<img src="/Home_Header/Rectangle.png" alt="illustration" className="w-full h-full object-contain"/>
+				</picture>
+
 				<div className="hero-section flex flex-row justify-center items-center">
 					<h1 className="font-title-slogan absolute top-[290px] left-[136px] uppercase w-[595px] text-center leading-tight">
 						Manage your customers and invoices easily
