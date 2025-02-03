@@ -85,3 +85,8 @@ body {
 .contact-card_info {
   font-family: 'Roboto', sans-serif;
 }
+
+.background-header {
+  font-family: 'Inter', sans-serif;
+  background-color: #9698D6;
+}
