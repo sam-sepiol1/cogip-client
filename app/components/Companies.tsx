@@ -28,7 +28,7 @@ export default function Companies() {
             tva: "123-456-7890",
             country: "USA",
             type: "Private",
-            created: "2023-12-30"
+            created: "02/12/2024"
         },
         {
             id: 2,
@@ -36,7 +36,7 @@ export default function Companies() {
             tva: "987-654-3210",
             country: "USA",
             type: "Client",
-            created: "2023-12-30"
+            created: "28/01/2025"
         },
         {
             id: 3,
@@ -44,7 +44,7 @@ export default function Companies() {
             tva: "555-123-4567",
             country: "USA",
             type: "Client",
-            created: "2023-12-30"
+            created: "16/05/2023"
         }
     ]
 
