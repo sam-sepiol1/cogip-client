@@ -6,7 +6,7 @@ export default function Daashboard_stats() {
 	};
 
 	return (
-		<main className='mt-16 ml-12 w-[507px] p-4 h-[232px] dashboard_drop-shadow'>
+		<main className='dashboard-stats mt-16 ml-12 w-[507px] p-4 h-[232px] dashboard_drop-shadow'>
 			<h3 className='text-2xl font-bold mb-6'>Statistics</h3>
 			<ul className='flex flex-row gap-8 px-5'>
 				<li>
