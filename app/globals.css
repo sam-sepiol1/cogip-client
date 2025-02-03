@@ -94,3 +94,21 @@ body {
 .dashboard_drop-shadow {
   box-shadow: 0 0 37px -21px rgb(0, 0, 0, 0.25);
 }
+
+.selected::after {
+  content: ""; 
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 4px; 
+  height: 100%;
+  background-color: #9698D6; 
+}
+
+.dashboard-title, .dashboard-stats, .dashboard-menu-items, .dashboard-menu-logout {
+  font-family: 'Inter', sans-serif;
+}
+
+.dashboard-menu-name { 
+  font-family: 'Roboto', sans-serif;
+}
