@@ -96,7 +96,7 @@ export default function Invoices() {
 	return (
         <main className="px-[136px]">
             <div className="px-5 mt-5 grid grid-cols-2 items-center">
-                <h3 className="titlePage title">Last Invoices</h3>
+                <h3 className="titlePage title">All invoices</h3>
                 <div className="justify-self-end mt-[90px]">
                     <SearchBar placeholder="Search contact" onSearch={handleSearch}/>
                 </div>
