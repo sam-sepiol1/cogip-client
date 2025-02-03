@@ -19,7 +19,7 @@ export default function Dashboard_menu() {
 				<ul className='flex flex-col gap-4 mt-14 ml-10 w-full dashboard-menu-items'>
 					<li className='dashboard_menu-item flex gap-7 w-full'>
 						<Image src='/Dashboard/Dashboard_dashboard-icon.svg' alt='Dashboard icon' width={22} height={22} />
-						<a className={`hover:font-bold w-full ${pathname === '/dashboard' ? ' font-semibold relative selected' : ''}`} href='#'>
+						<a className={`hover:font-bold w-full ${pathname === '/dashboard' ? ' font-semibold relative selected' : ''}`} href='/dashboard'>
 							Dashboard
 						</a>
 					</li>
