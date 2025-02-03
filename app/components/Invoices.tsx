@@ -67,10 +67,11 @@ export default function Invoices() {
         }
 
         const sortedData = [...filteredData].sort((a, b) => {
-            if (key === "created") {
+            if (key === "dueDates") {
                 if (!a[key] || !b[key]) return 0;
-                const dateA = new Date(String(a[key]).split("/").reverse().join("-"));
-                const dateB = new Date(String(b[key]).split("/").reverse().join("-"));
+
+                const dateA = new Date(a[key].split("/").reverse().join("-"));
+                const dateB = new Date(b[key].split("/").reverse().join("-"));
 
                 return direction === "ascending" ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime();
             } else {
