@@ -14,7 +14,7 @@ export default function Dashboard_header() {
 			<div className='dashboard_hero background-header p-16 text-white rounded-xl flex flex-row gap-4'>
 				<div className='dashboard_hero_infos'>
 					<h2 className='title text-4xl font-bold'> Welcome back, {dataTest.username}</h2>
-					<p className='w-[75%]'> You can here add an invoice, a company and some contacts </p>
+					<p className='w-[70%] pl-1.5'> You can here add an invoice, a company and some contacts </p>
 				</div>
 				<div className='dashboard_hero_illustration'>
 					<picture>
