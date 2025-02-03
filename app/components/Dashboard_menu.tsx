@@ -25,19 +25,19 @@ export default function Dashboard_menu() {
 					</li>
 					<li className='dashboard_menu-item flex gap-7'>
 						<Image src='/Dashboard/Dashboard_invoices-icon.svg' alt='Invoice icon' width={22} height={22} />
-						<a className={`hover:font-bold w-full ${pathname === '/dashboard_invoices' ? 'font-semibold relative selected' : ''}`} href='#'>
+						<a className={`hover:font-bold w-full ${pathname === '/dashboard_invoices' ? 'font-semibold relative selected' : ''}`} href='/dashboard_invoices'>
 							Invoices
 						</a>
 					</li>
 					<li className='dashboard_menu-item flex gap-7 w-full'>
 						<Image src='/Dashboard/Dashboard_companies-icon.svg' alt='Companies icon' width={22} height={22} />
-						<a className={`hover:font-bold w-full ${pathname === '/dashboard_companies' ? 'font-semibold relative selected' : ''}`} href='#'>
+						<a className={`hover:font-bold w-full ${pathname === '/dashboard_companies' ? 'font-semibold relative selected' : ''}`} href='/dashboard_companies'>
 							Companies
 						</a>
 					</li>
 					<li className='dashboard_menu-item flex gap-7 w-full'>
 						<Image src='/Dashboard/Dashboard_contacts-icon.svg' alt='Contacts icon' width={22} height={22} />
-						<a className={`hover:font-bold w-full ${pathname === '/dashboard_contacts' ? 'font-semibold relative selected' : ''}`} href='#'>
+						<a className={`hover:font-bold w-full ${pathname === '/dashboard_contacts' ? 'font-semibold relative selected' : ''}`} href='/dashboard_contacts'>
 							Contacts
 						</a>
 					</li>
@@ -47,7 +47,7 @@ export default function Dashboard_menu() {
 				<hr className='w-[95%] mb-2' />
 				<div className='flex items-center justify-between px-4'>
 					<Image src='/Dashboard/Dashboard_profile-picture.png' alt='Profile picture' width={48} height={48} />
-					<span className='text-2xl text-[#9698D6]'>
+					<span className='text-xl text-[#9698D6]'>
 						<a href='#'> Logout </a>
 					</span>
 				</div>
