@@ -5,31 +5,38 @@ export default function Header() {
     const pathname = usePathname();
     return (
         <main>
-        <div className=' bg-[url("/Home_Header/background.svg")] bg-cover bg-no-repeat'>
-            <header className='flex gap-10 p-20 size-auto '>
-                <h2 className='text-3xl font-bold'> COGIP </h2>
-                <nav className='content-center'>
-                    <ul className='flex flex-row gap-4 '>
-                        <li className={`hover:border border-black p-2 ${pathname === '/' ? 'border border-black' : ''}`}>
-                            <a href='/'>Home</a>
-                        </li>
-                        <li className={`hover:border border-black p-2 ${pathname === '/invoices' ? 'border border-black' : ''}`}>
-                            <a href='/invoices'>Invoice</a>
-                        </li>
-                        <li className={`hover:border border-black p-2 ${pathname === '/companies' ? 'border border-black' : ''}`}>
-                            <a href='/companies'>Companies</a>
-                        </li>
-                        <li className={`hover:border border-black p-2 ${pathname === '/contacts' ? 'border border-black' : ''}`}>
-                            <a href='/contacts'>Contacts</a>
-                        </li>
-                    </ul>
-                </nav>
-                <div className='flex flex-row gap-4 ml-auto'>
-                    <button className='bg-white px-3 py-1 rounded-xl'> Sign Up </button>
-                    <button> Login </button>
-                </div>
-            </header>
-        </div>
-    </main>
-    )
+            <div className="bg-[#F9DE4E] bg-cover bg-no-repeat bg-fixed h-[287px] relative overflow-hidden">
+                <header className="w-[82.85%] pt-[95px] mx-auto flex justify-between items-center">
+                    <h2 className="font-logo-header">COGIP</h2>
+
+                    <nav className="flex-grow">
+                        <ul className="font-nav-header ml-14 flex flex-row gap-5">
+                            <li className={`hover:border border-black p-2 ${pathname === '/' ? 'border border-black' : ''}`}>
+                                <a href='/'>Home</a>
+                            </li>
+                            <li className={`hover:border border-black p-2 ${pathname === '/invoices' ? 'border border-black' : ''}`}>
+                                <a href='/invoices'>Invoices</a>
+                            </li>
+                            <li className={`hover:border border-black p-2 ${pathname === '/companies' ? 'border border-black' : ''}`}>
+                                <a href='/companies'>Companies</a>
+                            </li>
+                            <li className={`hover:border border-black p-2 ${pathname === '/contacts' ? 'border border-black' : ''}`}>
+                                <a href='/contacts'>Contacts</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div className="font-nav-header flex flex-row gap-5">
+                        <button className="bg-white w-[102px] h-[37px] rounded-[10px]">Sign up</button>
+                        <button>Login</button>
+                    </div>
+                </header>
+
+                <picture
+                    className="absolute top-[192px] left-1/2 translate-x-[-50%] w-[1300px] h-[114px] z-10">
+                    <img src="/Home_Header/Rectangle.png" alt="illustration" className="w-full h-full object-contain"/>
+                </picture>
+            </div>
+        </main>
+    );
 }

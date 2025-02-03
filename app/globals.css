@@ -23,29 +23,61 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 .background-yellow { 
   background-color: #F9DE4E;
 }
 
+.font-logo-header {
+  font-family: Roboto, sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 56.25px;
+  color: #000000;
+}
+.font-nav-header {
+  font-family: Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 23.44px;
+  text-align: left;
+  color:#000000;
+}
+
+.font-title-slogan {
+  font-family: Inter, sans-serif;
+  font-size: 65px;
+  font-weight: 900;
+  line-height: 78.66px;
+  text-align: left;
+}
+
 .footer-nav {
-  font-family: 'Assistant', sans-serif;
+  font-family: Assistant, sans-serif;
   font-size: var(--footer-size-footer-nav);
   font-weight: var(--footer-weight-nav);
   line-height: var(--footer-line-height-nav);
   color: var(--footer-color-nav);
 }
 
-.footer-logo {
-  font-family: "Roboto", sans-serif;
-  font-size: 58px;
+.font-logo {
+  font-family: Roboto, sans-serif;
+  font-size: 48px;
   font-weight: 900;
   line-height: 56.25px;
   color: #434138;
 }
 
+.font-home-slogan {
+  font-family: Inter, sans-serif;
+  font-size: 68px;
+  font-weight: 900;
+  line-height: 82.3px;
+  text-align: left;
+  color: #000000;
+}
+
 .titlePage {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 60px;
   font-weight: 900;
   line-height: 72.61px;
@@ -67,7 +99,7 @@ body {
 }
 
 .titleTable {
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 23.44px;
@@ -75,7 +107,7 @@ body {
 }
 
 .fontDataTable {
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 23.44px;
@@ -83,11 +115,11 @@ body {
 }
 
 .contact-card_info {
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
 }
-
+  
 .background-header {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   background-color: #9698D6;
 }
 
