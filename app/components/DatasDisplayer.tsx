@@ -54,8 +54,8 @@ export default function DatasDisplayer<T extends { id: number }>({title, data, c
                 </tr>
                 </thead>
                 <tbody className="fontDataTable">
-                {filteredData.slice(0, limit || filteredData.length).map((item) => (
-                    <tr key={item.id} className="bg-white">
+                {filteredData.slice(0, limit || filteredData.length).map((item, index) => (
+                    <tr key={item.id} className={index % 2 === 0 ? "bg-white" : "bg-gray-200"}>
                         {columns.map((col) => (
                             <td key={String(col.key)} className="p-4">{String(item[col.key])}</td>
                         ))}
