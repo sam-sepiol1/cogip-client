@@ -24,6 +24,8 @@ export default function Login_register_header() {
 
 					<div className="flex flex-col justify-center items-center pt-[30%]">
 						<h2 className="text-4xl font-semibold">Start now !</h2>
+						<div>
+						<a href="#form-section">
 						<Image
 							src="/Home_Header/arrow-curve-down-right.svg"
 							alt="Illustration"
@@ -31,9 +33,9 @@ export default function Login_register_header() {
 							height={530}
 							className="w-[90px] pl-4  h-auto"
 						/>
+						</a>
+						</div>
 					</div>
-
-
 				</div>
 			</div>
 		</main>

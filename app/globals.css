@@ -17,6 +17,10 @@
   --footer-line-height-nav: 18.31px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
