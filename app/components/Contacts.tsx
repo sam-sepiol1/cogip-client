@@ -24,3 +24,4 @@ export const contactsData = [
             created: "02/12/2024"
         }
 ];
+export default contactsData;

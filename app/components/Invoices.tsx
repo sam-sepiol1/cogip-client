@@ -1,4 +1,4 @@
-export const invoicesData = [
+const invoicesData = [
     {
         id: 1,
         invoiceNumber: 123456789,
@@ -21,3 +21,4 @@ export const invoicesData = [
         created: "31/03/2025"
     }
 ];
+export default invoicesData;

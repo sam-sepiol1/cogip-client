@@ -1,4 +1,4 @@
-export const companiesData = [
+const companiesData = [
         {
             id: 1,
             name: "fSociety",
@@ -24,3 +24,4 @@ export const companiesData = [
             created: "16/05/2023"
         }
 ];
+export default companiesData;

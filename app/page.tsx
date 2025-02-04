@@ -1,9 +1,9 @@
 import Footer from "@/app/components/Footer";
 import Home_header from "./components/Home_header";
 import DatasDisplayer from "./components/DatasDisplayer";
-import Invoices from "./components/Invoices";
-import Contacts from "./components/Contacts";
-import Companies from "./components/Companies";
+import invoicesData from "./components/Invoices";
+import contactsData from "./components/Contacts";
+import companiesData from "./components/Companies";
 import Home_slogan from "./components/Home_slogan";
 
 import Image from "next/image";
@@ -14,7 +14,7 @@ export default function HomePage() {
             <Home_header />
 
             <div className="relative">
-                <DatasDisplayer className="titlePage" title="Last invoices" data={Invoices.testData} columns={[
+                <DatasDisplayer className="titlePage" title="Last invoices" data={ invoicesData } columns={[
                         { key: "invoiceNumber", label: "Invoice number" },
                         { key: "dueDates", label: "Due Dates" },
                         { key: "company", label: "Company" },
@@ -27,7 +27,7 @@ export default function HomePage() {
             </div>
 
             <div className="relative">
-                <DatasDisplayer className="titlePage" title="Last contacts" data={Contacts.testData} columns={[
+                <DatasDisplayer className="titlePage" title="Last contacts" data={ contactsData } columns={[
                         { key: "name", label: "Name" },
                         { key: "phone", label: "Phone" },
                         { key: "mail", label: "Mail" },
@@ -40,7 +40,7 @@ export default function HomePage() {
                 </div>
             </div>
 
-            <DatasDisplayer className="titlePage" title="Last companies" data={Companies.testData} columns={[
+            <DatasDisplayer className="titlePage" title="Last companies" data={ companiesData } columns={[
                     { key: "name", label: "Name" },
                     { key: "country", label: "Country" },
                     { key: "created", label: "Created at" }
