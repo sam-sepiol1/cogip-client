@@ -14,7 +14,7 @@ export default function HomePage() {
             <Home_header />
 
             <div className="relative">
-                <DatasDisplayer title="Last invoices" data={Invoices.testData} columns={[
+                <DatasDisplayer className="titlePage" title="Last invoices" data={Invoices.testData} columns={[
                         { key: "invoiceNumber", label: "Invoice number" },
                         { key: "dueDates", label: "Due Dates" },
                         { key: "company", label: "Company" },
@@ -27,7 +27,7 @@ export default function HomePage() {
             </div>
 
             <div className="relative">
-                <DatasDisplayer title="Last contacts" data={Contacts.testData} columns={[
+                <DatasDisplayer className="titlePage" title="Last contacts" data={Contacts.testData} columns={[
                         { key: "name", label: "Name" },
                         { key: "phone", label: "Phone" },
                         { key: "mail", label: "Mail" },
@@ -40,7 +40,7 @@ export default function HomePage() {
                 </div>
             </div>
 
-            <DatasDisplayer title="Last companies" data={Companies.testData} columns={[
+            <DatasDisplayer className="titlePage" title="Last companies" data={Companies.testData} columns={[
                     { key: "name", label: "Name" },
                     { key: "country", label: "Country" },
                     { key: "created", label: "Created at" }
