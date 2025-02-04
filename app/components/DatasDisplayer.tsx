@@ -19,7 +19,7 @@ interface Props<T> {
     className?: string;
 }
 
-export default function DatasDisplayer<T>({ title, data, columns, searchPlaceholder, limit, isHome }: Props<T>) {
+export default function DatasDisplayer<T extends { id: number }>({title, data, columns, searchPlaceholder, limit, isHome}: Props<T>) {
     const [filteredData, setFilteredData] = useState<T[]>(data || []);
 
     const handleSearch = (query: string) => {
