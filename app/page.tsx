@@ -26,7 +26,7 @@ export default function HomePage() {
                 </div>
             </div>
 
-            <div className="relative">
+            <div className="relative mt-[80px]">
                 <DatasDisplayer className="titlePage" title="Last contacts" data={ contactsData } columns={[
                         { key: "name", label: "Name" },
                         { key: "phone", label: "Phone" },
@@ -40,11 +40,13 @@ export default function HomePage() {
                 </div>
             </div>
 
+            <div className="mt-[80px]">
             <DatasDisplayer className="titlePage" title="Last companies" data={ companiesData } columns={[
                     { key: "name", label: "Name" },
                     { key: "country", label: "Country" },
                     { key: "created", label: "Created at" }
                 ]} limit={5} isHome={true} />
+            </div>
 
             <Home_slogan />
             <Footer />
