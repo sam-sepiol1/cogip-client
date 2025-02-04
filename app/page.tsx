@@ -43,7 +43,9 @@ export default function HomePage() {
             <div className="mt-[80px]">
             <DatasDisplayer className="titlePage" title="Last companies" data={ companiesData } columns={[
                     { key: "name", label: "Name" },
+                    { key: "tva", label: "TVA" },
                     { key: "country", label: "Country" },
+                    { key: "type", label: "Type" },
                     { key: "created", label: "Created at" }
                 ]} limit={5} isHome={true} />
             </div>
