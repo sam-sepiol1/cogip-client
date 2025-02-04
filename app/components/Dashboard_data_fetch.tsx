@@ -6,14 +6,14 @@ interface DynamicTableProps {
 
 export default function DynamicTable({ title, columns, data }: DynamicTableProps) {
 	return (
-		<div className='font-bold text-lg'>
-			<h2 className=''>{title}</h2>
-			<hr className='w-[95%] mt-4 mb-8' />
+		<div className='font-bold text-lg bg-white border-[#E0E0E0]'>
+			<h2 className='w-full text-left'>{title}</h2>
+			<hr className='w-[85%] text-left mt-4 mb-8 ' />
 			<table className='w-full px-8'>
 				<thead>
 					<tr>
 						{columns.map((column) => (
-							<th key={column} className='p-4 text-left'>
+							<th key={column} className='px-2 pb-4 text-left'>
 								{column}
 							</th>
 								))}

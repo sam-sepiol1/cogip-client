@@ -88,18 +88,16 @@ export default function Dashboard() {
 
 	return (
 		<main>
-			<div className='flex'>
+			<div className='flex h-screen'>
 				<Dashboard_menu />
-				<div className='w-full'>
+				<div className='flex-1 overflow-y-auto ml-[300px]'>
 					<Dashboard_header />
-					<div className='grid grid-cols-2'>
-						<div className='flex flex-col gap-8 pr-12'>
+					<div className='grid grid-cols-2 gap-8 z-30 absolute ml-12'>
+						<div className='flex flex-col gap-8'>
 							<Dashboard_stats />
-							<span className='ml-12'>
-								<Dashboard_data_fetch title='Last Contacts' columns={['Name', 'Phone', 'Email']} data={dataTestContacts} />
-							</span>
+							<Dashboard_data_fetch title='Last Contacts' columns={['Name', 'Phone', 'Email']} data={dataTestContacts} />
 						</div>
-						<div className='flex flex-col gap-8 pr-12'>
+						<div className='flex flex-col gap-8 '>
 							<Dashboard_data_fetch title='Last Invoices' columns={['Invoice Number', 'Invoice Date', 'Company']} data={dataTestInvoices} />
 							<Dashboard_data_fetch title='Last Companies' columns={['Company Name', 'TVA', 'Country']} data={dataTestCompanies} />
 						</div>
