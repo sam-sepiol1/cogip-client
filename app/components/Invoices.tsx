@@ -1,4 +1,4 @@
-export const testData = [
+export const invoicesData = [
     {
         id: 1,
         invoiceNumber: 123456789,
