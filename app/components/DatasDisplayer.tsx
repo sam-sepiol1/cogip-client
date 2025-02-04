@@ -19,7 +19,7 @@ interface Props {
 }
 
 export default function DatasDisplayer({ title, data, columns, searchPlaceholder, limit, isHome }: Props) {
-    const [filteredData, setFilteredData] = useState(data);
+    const [filteredData, setFilteredData] = useState<T[]>(data || []);
 
     const handleSearch = (query: string) => {
         if (!query) {
