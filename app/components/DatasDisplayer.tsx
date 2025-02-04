@@ -57,7 +57,7 @@ export default function DatasDisplayer<T>({ title, data, columns, searchPlacehol
                 {filteredData.slice(0, limit || filteredData.length).map((item) => (
                     <tr key={item.id} className="bg-white">
                         {columns.map((col) => (
-                            <td key={String(col.key)} className="p-4">{item[col.key]}</td>
+                            <td key={String(col.key)} className="p-4">{String(item[col.key])}</td>
                         ))}
                     </tr>
                 ))}
