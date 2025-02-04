@@ -12,7 +12,7 @@ export default function Dashboard_menu() {
 					<img src='Dashboard/Dashboard_profile-picture.png' alt='Profile picture' />
 				</picture>
 				<span className='font-black text-2xl dashboard-menu-name'>Henry</span>
-				<span className='font-black text-2xl dashboard-menu-name'>Georges</span>
+				<span className='font-black text-2xl dashboard-menu-name'>George</span>
 			</div>
 			<hr className='w-[95%] mt-10' />
 			<div className='nav flex'>
@@ -25,7 +25,7 @@ export default function Dashboard_menu() {
 					</li>
 					<li className='dashboard_menu-item flex gap-7'>
 						<Image src='/Dashboard/Dashboard_invoices-icon.svg' alt='Invoice icon' width={22} height={22} />
-						<a className={`hover:font-bold w-full ${pathname === '/dashboard_invoices' ? 'font-semibold relative selected' : ''}`} href='/dashboard_invoices'>
+						<a className={`hover:font-bold w-full ${pathname === '/dashboard/invoices' ? 'font-semibold relative selected' : ''}`} href='/dashboard_invoices'>
 							Invoices
 						</a>
 					</li>
