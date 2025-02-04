@@ -6,8 +6,8 @@ interface Props {
 export default function New_entry_form({ title, fields }: Props) {
     return (
         <main className="flex flex-col ml-12 p-7 dashboard_form">
-            <h1 className="text-xl font-bold mb-12">{title}</h1>
-            <hr />
+            <h1 className="text-xl font-bold mb-4">{title}</h1>
+            <hr className="w-[95%] mb-12"/>
             <form action="" method="post" className="flex flex-col w-full gap-10">
                 {fields.map((field) => {
                     return (
