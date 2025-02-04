@@ -137,7 +137,7 @@ body {
   background-color: #9698D6; 
 }
 
-.dashboard-title, .dashboard-stats, .dashboard-menu-items, .dashboard-menu-logout {
+.dashboard-title, .dashboard-stats, .dashboard-menu-items, .dashboard-menu-logout, .dashboard_form {
   font-family: 'Inter', sans-serif;
 }
 
