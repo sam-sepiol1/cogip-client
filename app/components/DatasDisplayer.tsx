@@ -16,6 +16,7 @@ interface Props {
     searchPlaceholder?: string;
     limit?: number;
     isHome?: boolean;
+    className?: string;
 }
 
 export default function DatasDisplayer({ title, data, columns, searchPlaceholder, limit, isHome }: Props) {
