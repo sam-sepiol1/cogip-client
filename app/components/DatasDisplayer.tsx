@@ -3,13 +3,13 @@
 import { useState } from "react";
 import SearchBar from "../components/Search_bar";
 
-interface Column {
-    key: string;
+interface Column<T> {
+    key: keyof T;
     label: string;
     sortable?: boolean;
 }
 
-interface Props {
+interface Props<T> {
     title: string;
     data: T[];
     columns: Column<T>[];
@@ -19,7 +19,7 @@ interface Props {
     className?: string;
 }
 
-export default function DatasDisplayer({ title, data, columns, searchPlaceholder, limit, isHome }: Props) {
+export default function DatasDisplayer<T>({ title, data, columns, searchPlaceholder, limit, isHome }: Props<T>) {
     const [filteredData, setFilteredData] = useState<T[]>(data || []);
 
     const handleSearch = (query: string) => {
@@ -49,7 +49,7 @@ export default function DatasDisplayer({ title, data, columns, searchPlaceholder
                 <thead className="titleTable">
                 <tr className="background-yellow">
                     {columns.map((col) => (
-                        <th key={col.key} className="p-4">{col.label}</th>
+                        <th key={String(col.key)} className="p-4">{col.label}</th>
                     ))}
                 </tr>
                 </thead>
@@ -57,7 +57,7 @@ export default function DatasDisplayer({ title, data, columns, searchPlaceholder
                 {filteredData.slice(0, limit || filteredData.length).map((item) => (
                     <tr key={item.id} className="bg-white">
                         {columns.map((col) => (
-                            <td key={col.key} className="p-4">{item[col.key]}</td>
+                            <td key={String(col.key)} className="p-4">{item[col.key]}</td>
                         ))}
                     </tr>
                 ))}
