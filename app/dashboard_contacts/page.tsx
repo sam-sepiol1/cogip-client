@@ -7,7 +7,7 @@ export default function Dashboard_contacts() {
 		<main>
 			<div className='flex'>
 				<Dashboard_menu />
-				<div className='flex flex-col w-full'>
+				<div className='flex flex-col ml-[300px] w-full'>
 					<Dashboard_header />
 					<New_entry_form title='New Contact' fields={['first_name', 'last_name', 'email', 'phone']} />
 				</div>
