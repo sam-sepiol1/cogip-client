@@ -23,7 +23,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.background-yellow { 
+.background-yellow {
   background-color: #F9DE4E;
 }
 
@@ -117,7 +117,7 @@ body {
 .contact-card_info {
   font-family: Roboto, sans-serif;
 }
-  
+
 .background-header {
   font-family: Inter, sans-serif;
   background-color: #9698D6;
@@ -128,23 +128,32 @@ body {
 }
 
 .selected::after {
-  content: ""; 
+  content: "";
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 4px; 
+  width: 4px;
   height: 100%;
-  background-color: #9698D6; 
+  background-color: #9698D6;
 }
 
-.dashboard-title, .dashboard-stats, .dashboard-menu-items, .dashboard-menu-logout {
+.dashboard-title, .dashboard-stats, .dashboard-menu-items, .dashboard-menu-logout, .dashboard_form {
   font-family: 'Inter', sans-serif;
 }
 
-.dashboard-menu-name { 
+.dashboard_menu {
+  background-color: white;
+}
+
+.dashboard-menu-name {
   font-family: 'Roboto', sans-serif;
 }
 
+.dashboard_background {
+  background-color: #F5F5FB;
+}
+
+/*Check si encore use !*/
 .dashboard-font-title {
   font-family: Inter, sans-serif;
   font-size: 20px;
