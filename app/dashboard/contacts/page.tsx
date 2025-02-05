@@ -1,6 +1,6 @@
-import Dashboard_header from '../components/Dashboard_header';
-import Dashboard_menu from '../components/Dashboard_menu';
-import New_entry_form from '../components/New_entry_form';
+import Dashboard_header from '../../components/Dashboard_header';
+import Dashboard_menu from '../../components/Dashboard_menu';
+import New_entry_form from '../../components/New_entry_form';
 
 export default function Dashboard_contacts() {
 	return (
