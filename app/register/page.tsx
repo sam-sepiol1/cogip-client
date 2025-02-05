@@ -1,39 +1,53 @@
+'use client'
+
 import Login_register_header from "@/app/components/Login_register_header";
+import React, { useState } from "react";
+import axios from "axios";
+import New_entry_form from "@/app/components/New_entry_form";
 
 export default function Register() {
+    const [dto, setDto] = useState({
+        first_name: '',
+        last_name: '',
+        role_id: 1,
+        email: '',
+        password: ''
+    });
+
+    const [ error, setError ] = useState("");
+
+    const handleChange = (name: string, value: string) => {
+        setDto((prevDto) => ({
+            ...prevDto,
+            [name]: value
+        }));
+    };
+
+    const handleSubmitForm = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        try {
+            const response = await axios.post('http://localhost:3000/api/auth/register', dto);
+            console.log(response.data);
+            console.log("Compte créé avec succès");
+        } catch (error) {
+            setError(error.response.data.message);
+            console.error('Error while registering:', error.response.data.message);
+        }
+    };
+
     return (
         <main>
-            <Login_register_header />
-
-            <section id="form-section" className="flex flex-col items-center justify-center h-[100vh] bg-[#F5F5FB]">
-                <h1 className="font-semibold font-logo-header">Commençons par créer votre compte !</h1>
-
-                <section className="flex flex-col w-[450px] bg-white mt-14 p-6 rounded-lg shadow-md">
-                    <form className="space-y-4">
-                        <div>
-                            <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">Prénom :</label>
-                            <input type="text" name="lastname" placeholder="John" required className="mt-1 block w-full border border-gray-300 rounded-md p-2"/>
-                        </div>
-
-                        <div>
-                            <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">Nom :</label>
-                            <input type="text" name="firstname" placeholder="Doe" required className="mt-1 block w-full border border-gray-300 rounded-md p-2"/>
-                        </div>
-
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email :</label>
-                            <input type="email" name="email" placeholder="email@example.com" required className="mt-1 block w-full border border-gray-300 rounded-md p-2"/>
-                        </div>
-
-                        <div>
-                            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Mot de passe :</label>
-                            <input type="password" name="password" placeholder="Choisissez votre mot de passe" required className="mt-1 block w-full border border-gray-300 rounded-md p-2"/>
-                        </div>
-
-                        <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">C&#39;est parti !</button>
-                    </form>
-                </section>
-            </section>
+            <Login_register_header/>
+            <New_entry_form
+                title="Commençons par créer votre compte"
+                fields={["first_name", "last_name", "email", "password"]}
+                placeholders={["John", "Doe", "Email", "Password"]}
+                onChange={handleChange}
+                onSubmit={handleSubmitForm}
+                submitText="C'est parti"
+                errorMessage={error}
+            />
         </main>
     )
 }
