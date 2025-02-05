@@ -14,7 +14,7 @@ export default function NewInvoicePage() {
                 <section className="bg-white p-8 rounded-[10px] dashboard_drop-shadow w-[1044px] h-[558px] border border-[#E0E0E0] ml-16">
                     <h2 className="dashboard-font-title mt-6 mb-4">New invoice</h2>
 
-                    <div className="w-[981px] h-[1px] bg-[#E0E0E0] my-6 mx-auto"></div>
+                    <div className="w-[981px] h-[1px] bg-[#E0E0E0] mt-6 mb-10 mx-auto"></div>
 
                     <form className="flex flex-col space-y-4">
                         <input type="text" placeholder="Reference" className="dashboard-font-input w-full"/>
