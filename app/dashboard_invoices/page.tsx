@@ -11,11 +11,23 @@ export default function NewInvoicePage() {
 
                 <Dashboard_header />
 
-                <section className="bg-white p-8 rounded-lg shadow-md w-[1044px] h-[558px] border-t border-gray-300 ml-16">
-                    <h2 className="dashboard-menu-items mb-4 text-[20px] font-bold leading-[24.2px] text-left">
-                        New invoice
-                    </h2>
+                <section className="bg-white p-8 rounded-[10px] dashboard_drop-shadow w-[1044px] h-[558px] border border-[#E0E0E0] ml-16">
+                    <h2 className="dashboard-font-title mt-6 mb-4">New invoice</h2>
 
+                    <div className="w-[981px] h-[1px] bg-[#E0E0E0] my-6 mx-auto"></div>
+
+                    <form className="flex flex-col space-y-4">
+                        <input type="text" placeholder="Reference" className="dashboard-font-input w-full"/>
+                        <input type="number" placeholder="Price" className="dashboard-font-input w-full"/>
+                        <select className="dashboard-font-input w-full">
+                            <option>Company name</option>
+                            <option>fSociety</option>
+                            <option>Heisenberg</option>
+                            <option>Dunder Mifflin</option>
+                        </select>
+
+                        <button type="submit" className="dashboard-font-button bg-[#9698D6]">Save</button>
+                    </form>
 
                 </section>
             </div>
