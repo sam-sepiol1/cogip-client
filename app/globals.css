@@ -144,3 +144,29 @@ body {
 .dashboard-menu-name { 
   font-family: 'Roboto', sans-serif;
 }
+
+.dashboard-font-title {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.2px;
+  text-align: left;
+}
+
+.dashboard-font-input {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 24.2px;
+  text-align: left;
+  color: #000000;
+}
+
+.dashboard-font-button {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24.2px;
+  text-align: left;
+  color: white;
+}
