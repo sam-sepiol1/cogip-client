@@ -141,6 +141,14 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+.dashboard_menu {
+  background-color: white;
+}
+
 .dashboard-menu-name { 
   font-family: 'Roboto', sans-serif;
+}
+
+.dashboard_background { 
+  background-color: #F5F5FB;
 }
