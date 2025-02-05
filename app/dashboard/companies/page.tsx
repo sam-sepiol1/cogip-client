@@ -2,7 +2,6 @@ import Dashboard_menu from '../../components/Dashboard_menu';
 import Dashboard_header from '../../components/Dashboard_header';
 import New_entry_form from '../../components/New_entry_form';
 
-
 export default function Dashboard_companies() {
     return (
         <main className='h-screen'>
