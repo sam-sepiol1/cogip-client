@@ -10,7 +10,7 @@ export default function Dashboard_menu() {
 			<aside className='flex flex-col dashboard_menu w-[300px] pt-16'>
 				<div className='profile_infos flex flex-col items-center'>
 					<picture className='mb-4'>
-						<img src='Dashboard/Dashboard_profile-picture.png' alt='Profile picture' />
+						<Image src='/Dashboard/Dashboard_profile-picture.png' alt='Profile picture' width={100} height={100} />
 					</picture>
 					<span className='font-black text-2xl dashboard-menu-name'>Henry</span>
 					<span className='font-black text-2xl dashboard-menu-name'>Georges</span>
