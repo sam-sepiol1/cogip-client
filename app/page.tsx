@@ -7,13 +7,13 @@ import Footer from "@/app/components/Footer";
 import Home_header from "./components/Home_header";
 import DatasDisplayer from "./components/DatasDisplayer";
 import contactsData from "./components/Contacts";
-import companiesData from "./components/Companies";
 import Home_slogan from "./components/Home_slogan";
 
 import Image from "next/image";
 
 export default function HomePage() {
     const [invoices, setInvoices] = useState([]);
+    const [companies, setCompanies] = useState([]);
 
     useEffect(() => {
         const fetchInvoices = async () => {
@@ -24,7 +24,16 @@ export default function HomePage() {
             }
         };
 
+        const fetchCompanies = async () => {
+            try {
+                const response = await axios.get("http://localhost:3000/api/company");
+                setCompanies(response.data);
+            } catch {
+            }
+        };
+
         fetchInvoices();
+        fetchCompanies();
     }, []);
 
     return (
@@ -59,12 +68,12 @@ export default function HomePage() {
             </div>
 
             <div className="mt-[80px]">
-            <DatasDisplayer className="titlePage" title="Last companies" data={ companiesData } columns={[
+            <DatasDisplayer className="titlePage" title="Last companies" data={ companies } columns={[
                     { key: "name", label: "Name" },
                     { key: "tva", label: "TVA" },
                     { key: "country", label: "Country" },
                     { key: "type", label: "Type" },
-                    { key: "created", label: "Created at" }
+                    { key: "created_at", label: "Created at" }
                 ]} limit={5} isHome={true} />
             </div>
 
