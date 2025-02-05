@@ -1,7 +1,11 @@
+'use client'
+
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import Footer from "@/app/components/Footer";
 import Home_header from "./components/Home_header";
 import DatasDisplayer from "./components/DatasDisplayer";
-import invoicesData from "./components/Invoices";
 import contactsData from "./components/Contacts";
 import companiesData from "./components/Companies";
 import Home_slogan from "./components/Home_slogan";
@@ -9,16 +13,30 @@ import Home_slogan from "./components/Home_slogan";
 import Image from "next/image";
 
 export default function HomePage() {
+    const [invoices, setInvoices] = useState([]);
+
+    useEffect(() => {
+        const fetchInvoices = async () => {
+            try {
+                const response = await axios.get("http://localhost:3000/api/invoice");
+                setInvoices(response.data);
+            } catch {
+            }
+        };
+
+        fetchInvoices();
+    }, []);
+
     return (
         <main>
             <Home_header />
 
             <div className="relative">
-                <DatasDisplayer className="titlePage" title="Last invoices" data={ invoicesData } columns={[
-                        { key: "invoiceNumber", label: "Invoice number" },
-                        { key: "dueDates", label: "Due Dates" },
-                        { key: "company", label: "Company" },
-                        { key: "created", label: "Created at" }
+                <DatasDisplayer className="titlePage" title="Last invoices" data={ invoices } columns={[
+                    { key: "ref", label: "Invoice number" },
+                    { key: "due_date", label: "Due Dates" },
+                    { key: "id_company", label: "Company" },
+                    { key: "created_at", label: "Created at" }
                 ]} limit={5} isHome={true} />
 
                 <div className="absolute right-0 mt-[-30px]">
