@@ -149,6 +149,10 @@ body {
   background-color: white;
 }
 
+#form-section {
+  height: 100vh;
+}
+
 .dashboard-menu-name {
   font-family: 'Roboto', sans-serif;
 }
