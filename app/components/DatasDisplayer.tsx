@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState, useEffect } from "react";
 import SearchBar from "../components/Search_bar";
@@ -18,6 +18,15 @@ interface Props<T> {
     isHome?: boolean;
     className?: string;
 }
+
+const formatDate = (dateString: string | null) => {
+    if (!dateString) return "N/A";
+
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return "N/A";
+
+    return new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" }).format(date);
+};
 
 export default function DatasDisplayer<T extends { id: number }>({ title, data, columns, searchPlaceholder, limit, isHome }: Props<T>) {
     const [filteredData, setFilteredData] = useState<T[]>([]);
@@ -62,9 +71,13 @@ export default function DatasDisplayer<T extends { id: number }>({ title, data, 
                     </thead>
                     <tbody className="fontDataTable">
                     {filteredData.slice(0, limit || filteredData.length).map((item, index) => (
-                        <tr key={item.id} className={index % 2 === 0 ? "bg-white" : "bg-gray-200"}>
+                        <tr key={item.id} className={index % 2 === 0 ? "bg-white" : "bg-[#F5F5F5]"}>
                             {columns.map((col) => (
-                                <td key={String(col.key)} className="p-4">{String(item[col.key])}</td>
+                                <td key={String(col.key)} className="p-4">
+                                    {["date", "created"].some(keyword => String(col.key).toLowerCase().includes(keyword))
+                                        ? formatDate(item[col.key] as string)
+                                        : String(item[col.key])}
+                                </td>
                             ))}
                         </tr>
                     ))}

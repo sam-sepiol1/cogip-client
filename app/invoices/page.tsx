@@ -13,11 +13,8 @@ export default function InvoicePage() {
         const fetchInvoices = async () => {
             try {
                 const response = await axios.get("http://localhost:3000/api/invoice");
-                console.log("Données reçues depuis l'API:", response.data);
                 setInvoices(response.data);
-            } catch (error) {
-                console.error("Erreur lors de la récupération des factures:", error);
-            }
+            } catch  {}
         };
 
         fetchInvoices();
