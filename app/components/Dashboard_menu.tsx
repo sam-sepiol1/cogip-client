@@ -26,7 +26,7 @@ export default function Dashboard_menu() {
 						</li>
 						<li className='dashboard_menu-item flex gap-7'>
 							<Image src='/Dashboard/Dashboard_invoices-icon.svg' alt='Invoice icon' width={22} height={22} />
-							<a className={`hover:font-bold w-full ${pathname === '/dashboard_invoices' ? 'font-semibold relative selected' : ''}`} href='/dashboard_invoices'>
+							<a className={`hover:font-bold w-full ${pathname === '/dashboard/invoices' ? 'font-semibold relative selected' : ''}`} href='/dashboard/invoices'>
 								Invoices
 							</a>
 						</li>
