@@ -9,7 +9,7 @@ export default function Dashboard_companies() {
                 <Dashboard_menu />
                 <div className='flex flex-col ml-[300px] w-full dashboard_background h-full justify-center '>
                     <Dashboard_header />
-                    <New_entry_form title='New Company' fields={['Company name', 'TVA', 'Country', 'Type']} />
+                    <New_entry_form title='New Company' fields={['Company name', 'TVA', 'Country', 'Type']} submitText='Create company' onChange={} onSubmit={} />
                 </div>
             </div>
         </main>
