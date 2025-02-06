@@ -1,3 +1,8 @@
+"use client";
+
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import Dashboard_header from '../components/Dashboard_header';
 import Dashboard_menu from '../components/Dashboard_menu';
 import Dashboard_stats from '../components/Dashboard_stats';
@@ -53,38 +58,31 @@ export default function Dashboard() {
 		},
 	];
 
-	const dataTestContacts = [
-		{
-			name: 'Sam Sepiol',
-			phone: '123-456-7890',
-			email: 'samsepiol@example.com',
-		},
-		{
-			name: 'Walter White',
-			phone: '123-456-7890',
-			email: 'walterwhite@example.com',
-		},
-		{
-			name: 'Michael Scott',
-			phone: '123-456-7890',
-			email: 'michaelscott@example.com',
-		},
-		{
-			name: 'Jonas Kahnwald',
-			phone: '123-456-7890',
-			email: 'jonaskahnwald@example.com',
-		},
-		{
-			name: 'Dr. Ross Geller',
-			phone: '123-456-7890',
-			email: 'rossgeller@example.com',
-		},
-		{
-			name: 'Darlene Alderson',
-			phone: '123-456-7890',
-			email: 'darlenealderson@example.com',
-		},
-	];
+	const [contacts, setContacts] = useState([]);
+
+	const fetchData = async () => {
+		try {
+			const response = await axios.get('http://localhost:3000/api/contact');
+			const data = response.data;
+			const filteredData = data.map((contact: { name: unknown; phone: unknown; email: unknown }) => ({
+				name: contact.name,
+				phone: contact.phone,
+				email: contact.email,
+			}));
+
+			setContacts(filteredData);
+			console.log('Fetched contacts');
+			
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	};
+
+	useEffect(() => {
+		(async () => { 
+			await fetchData();
+		})();
+	}, []);
 
 	return (
 		<main>
@@ -95,7 +93,7 @@ export default function Dashboard() {
 					<div className='grid grid-cols-2 gap-8 z-30 absolute ml-12'>
 						<div className='flex flex-col gap-8'>
 							<Dashboard_stats />
-							<Dashboard_data_fetch title='Last Contacts' columns={['Name', 'Phone', 'Email']} data={dataTestContacts} />
+							<Dashboard_data_fetch title='Last Contacts' columns={['Name', 'Phone', 'Email']} data={contacts} />
 						</div>
 						<div className='flex flex-col gap-8 '>
 							<Dashboard_data_fetch title='Last Invoices' columns={['Invoice Number', 'Invoice Date', 'Company']} data={dataTestInvoices} />
