@@ -19,8 +19,7 @@ export default function Daashboard_stats() {
 		}
 		catch (error) {
 			console.error("Error fetching data:", error);
-		}
-			
+		}	
 	}
 
 	useEffect(() => {
