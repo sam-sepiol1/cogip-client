@@ -8,21 +8,22 @@ export default function Daashboard_stats() {
 	const [nbCompanies, setNbCompanies] = useState(0);
 	const [nbContacts, setNbContacts] = useState(0);
 
-	const fetchData = async () => {
-		try {
-			const invoicesResponse = await axios.get("http://localhost:3000/api/countInvoices");
-			const companiesResponse = await axios.get("http://localhost:3000/api/countCompanies");
-			const contactsResponse = await axios.get("http://localhost:3000/api/countContacts");
-			setNbInvoices(invoicesResponse.data.totalInvoices);
-			setNbCompanies(companiesResponse.data.totalCompanies);
-			setNbContacts(contactsResponse.data.totalContacts);
-		}
-		catch (error) {
-			console.error("Error fetching data:", error);
-		}	
-	}
+
 
 	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const invoicesResponse = await axios.get("http://localhost:3000/api/countInvoices");
+				setNbInvoices(invoicesResponse.data.totalInvoices);
+				const companiesResponse = await axios.get("http://localhost:3000/api/countCompanies");
+				setNbCompanies(companiesResponse.data.totalCompanies);
+				const contactsResponse = await axios.get("http://localhost:3000/api/countContacts");
+				setNbContacts(contactsResponse.data.totalContacts);
+			}
+			catch (error) {
+				console.error("Error fetching data:", error);
+			}	
+		}
 		fetchData();
 	}, []);
 
