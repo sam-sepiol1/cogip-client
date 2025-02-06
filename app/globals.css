@@ -17,6 +17,10 @@
   --footer-line-height-nav: 18.31px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
@@ -143,6 +147,10 @@ body {
 
 .dashboard_menu {
   background-color: white;
+}
+
+#form-section {
+  height: 100vh;
 }
 
 .dashboard-menu-name {
