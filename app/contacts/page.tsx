@@ -1,37 +1,57 @@
-'use client'
+"use client";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import DatasDisplayer from "../components/DatasDisplayer";
+import Footer from "../components/Footer";
+
+interface Contact {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    company: string;
+    created_at: string;
+}
 
 export default function ContactsPage() {
-    const [contacts, setContacts] = useState([]);
+    const [contacts, setContacts] = useState<Contact[]>([]);
+    const limit = 10;
+    const offset = 0;
 
     useEffect(() => {
         const fetchContacts = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/api/contact");
+                console.log("Retrieving contacts...");
+                const response = await axios.get<Contact[]>(`http://localhost:3000/api/sortedAscContacts/${limit}/${offset}`);
+                console.log("Contacts recovered :", response.data);
                 setContacts(response.data);
-            } catch  {}
+            } catch (error) {
+                console.error("Error retrieving contacts :", error);
+            }
         };
 
         fetchContacts();
-    }, []);
+    }, [limit, offset]);
 
     return (
         <main>
             <Header />
 
-            <DatasDisplayer title="All Contacts" data={ contacts } columns={[
+            <DatasDisplayer
+                title="All Contacts"
+                data={contacts}
+                columns={[
                     { key: "name", label: "Name" },
                     { key: "phone", label: "Phone" },
                     { key: "email", label: "Mail" },
-                    { key: "company_id", label: "Company" },
+                    { key: "company", label: "Company" },
                     { key: "created_at", label: "Created at" }
-                ]} searchPlaceholder="Search contact" />
+                ]}
+                searchPlaceholder="Search contact"
+            />
 
             <Footer />
         </main>
