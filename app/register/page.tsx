@@ -1,16 +1,18 @@
 'use client'
 
 import Login_register_header from "@/app/components/Login_register_header";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import New_entry_form from "@/app/components/New_entry_form";
-import {redirect} from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
+    const router = useRouter();
+
     const [dto, setDto] = useState({
         first_name: '',
         last_name: '',
-        role_id: 3, // Temporairement ajouté comme "membre"
+        role_id: 3,
         email: '',
         password: ''
     });
@@ -29,15 +31,21 @@ export default function Register() {
 
         try {
             const response = await axios.post('http://localhost:3000/api/auth/register', dto);
-            console.log(response);
 
-            redirect('http:localhost:3001/dashboard');
+            if (response.status !== 200) {
+                return;
+            }
 
+            try {
+                router.push('/dashboard');
+
+            } catch (error) {
+                console.error("Redirect error -> ", error);
+            }
 
         } catch (error) {
-            console.log("IL N'Y A PAS D'ERREUR !!")
-            setError(`${error.response.data.message}, please try again.`);
-            console.error('Error while registering:', error.response.data.message);
+            setError(`${error}, please try again.`);
+            console.error('Error while registering:', error);
         }
     };
 
