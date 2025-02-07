@@ -14,28 +14,19 @@ interface Contact {
 	email: string;
 }
 
+interface Invoice {
+	ref: string;
+	due_date: string;
+	company: string;
+}
+
+interface Company {
+	name: string;
+	tva: string;
+	country: string;
+}
+
 export default function Dashboard() {
-	const fetchAllData = async () => {
-		try {
-			const invoicesResponse = await axios.get("http://localhost:3000/api/countInvoices");
-			const companiesResponse = await axios.get("http://localhost:3000/api/countCompanies");
-			const contactsResponse = await axios.get("http://localhost:3000/api/countContacts");
-			const contacts = await axios.get("http://localhost:3000/api/contact");
-			const invoices = await axios.get("http://localhost:3000/api/invoice");
-			const companies = await axios.get("http://localhost:3000/api/company");
-	
-			return {
-				nbInvoices: invoicesResponse.data.totalInvoices,
-				nbCompanies: companiesResponse.data.totalCompanies,
-				nbContacts: contactsResponse.data.totalContacts,
-				contacts: contacts.data,
-				invoices: invoices.data,
-				companies: companies.data,
-			}
-		} catch (error) {
-			console.error("Error fetching data:", error);
-		}
-	};
 	const [stats, setStats] = useState({
 		nbInvoices: 0,
 		nbCompanies: 0,
@@ -44,35 +35,69 @@ export default function Dashboard() {
 	const [contacts, setContacts] = useState([]);
 	const [invoices, setInvoices] = useState([]);
 	const [companies, setCompanies] = useState([]);
+	const fetchAllData = async () => {
+		try {
+			const invoicesResponse = await axios.get('http://localhost:3000/api/countInvoices');
+			const companiesResponse = await axios.get('http://localhost:3000/api/countCompanies');
+			const contactsResponse = await axios.get('http://localhost:3000/api/countContacts');
+			const contacts = await axios.get('http://localhost:3000/api/contact');
+			const invoices = await axios.get('http://localhost:3000/api/paginatedInvoices/5/0');
+			const companies = await axios.get('http://localhost:3000/api/company');
+
+			return {
+				nbInvoices: invoicesResponse.data.totalInvoices,
+				nbCompanies: companiesResponse.data.totalCompanies,
+				nbContacts: contactsResponse.data.totalContacts,
+				contacts: contacts.data,
+				invoices: invoices.data,
+				companies: companies.data,
+			};
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	};
+
+	const fetchData = async () => {
+		try {
+			const response = await fetchAllData();
+			if (response) {
+				setStats({
+					nbInvoices: response.nbInvoices,
+					nbCompanies: response.nbCompanies,
+					nbContacts: response.nbContacts,
+				});
+
+				const formattedContacts =
+					response.contacts?.map((contact: Contact) => ({
+						name: contact.name,
+						phone: contact.phone,
+						email: contact.email,
+					})) || [];
+
+				const formattedInvoices = response.invoices?.map((invoice: Invoice) => ({
+					invoiceNumber: invoice.ref,
+					dueDates: new Date(invoice.due_date).toLocaleDateString('fr-FR'),
+					company: invoice.company,
+				})) || [];
+
+				const formattedCompanies = response.companies?.map((company: Company) => ({
+					name: company.name,
+					tva: company.tva,
+					country: company.country,
+				}));
+
+				setContacts(formattedContacts);
+				setInvoices(formattedInvoices);
+				setCompanies(formattedCompanies);
+			}
+		} catch (error) {
+			console.error('Erreur lors de la récupération des données:', error);
+		}
+	};
 
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await fetchAllData();
-				if (response) {
-					setStats({
-						nbInvoices: response.nbInvoices,
-						nbCompanies: response.nbCompanies,
-						nbContacts: response.nbContacts,
-					});
-
-					const formattedContacts =
-						response.contacts?.map((contact: Contact) => ({
-							name: contact.name,
-							phone: contact.phone,
-							email: contact.email,
-						})) || [];
-
-					setContacts(formattedContacts);
-					setInvoices(response.invoices);
-					setCompanies(response.companies);
-				}
-			} catch (error) {
-				console.error('Erreur lors de la récupération des données:', error);
-			}
-		};
 		fetchData();
-	}, []);
+	});
 
 	return (
 		<main>
