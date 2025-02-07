@@ -1,32 +1,15 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import axios from "axios";
+interface DashboardStatsProps {
+	stats: {
+		nbInvoices: number;
+		nbCompanies: number;
+		nbContacts: number;
+	};
+}
 
-export default function Daashboard_stats() {
-	const [nbInvoices, setNbInvoices] = useState(0);
-	const [nbCompanies, setNbCompanies] = useState(0);
-	const [nbContacts, setNbContacts] = useState(0);
-
-
-
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const invoicesResponse = await axios.get("http://localhost:3000/api/countInvoices");
-				setNbInvoices(invoicesResponse.data.totalInvoices);
-				const companiesResponse = await axios.get("http://localhost:3000/api/countCompanies");
-				setNbCompanies(companiesResponse.data.totalCompanies);
-				const contactsResponse = await axios.get("http://localhost:3000/api/countContacts");
-				setNbContacts(contactsResponse.data.totalContacts);
-			}
-			catch (error) {
-				console.error("Error fetching data:", error);
-			}	
-		}
-		fetchData();
-	}, []);
-
+export default function Dashboard_stats({ stats }: DashboardStatsProps) {
+	const { nbInvoices, nbCompanies, nbContacts } = stats;
 
 	return (
 		<main className='dashboard-stats w-[507px] px-4 h-[232px] dashboard_drop-shadow'>
