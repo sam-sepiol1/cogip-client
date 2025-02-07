@@ -1,90 +1,104 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import Dashboard_header from '../components/Dashboard_header';
 import Dashboard_menu from '../components/Dashboard_menu';
 import Dashboard_stats from '../components/Dashboard_stats';
 import Dashboard_data_fetch from '../components/Dashboard_data_fetch';
 
+interface Contact {
+	name: string;
+	phone: string;
+	email: string;
+}
+
+interface Invoice {
+	ref: string;
+	due_date: string;
+	company: string;
+}
+
+interface Company {
+	name: string;
+	tva: string;
+	country: string;
+}
+
 export default function Dashboard() {
-	// Mock data for the dashboard
-	// TODO : Delete this when backend is ready and connected
+	const [stats, setStats] = useState({
+		nbInvoices: 0,
+		nbCompanies: 0,
+		nbContacts: 0,
+	});
+	const [contacts, setContacts] = useState([]);
+	const [invoices, setInvoices] = useState([]);
+	const [companies, setCompanies] = useState([]);
 
-	const dataTestInvoices = [
-		{
-			invoiceNumber: 'BE0987 876 787',
-			invoiceDate: '12/12/12',
-			company: 'fSociety',
-		},
-		{
-			invoiceNumber: 'BE0987 876 787',
-			invoiceDate: '13/08/15',
-			company: 'Dunder Mifflin',
-		},
-		{
-			invoiceNumber: 'BE0987 876 787',
-			invoiceDate: '25/03/20',
-			company: 'fSociety',
-		},
-		{
-			invoiceNumber: 'BE0987 876 787',
-			invoiceDate: '15/01/23',
-			company: 'fSociety',
-		},
-	];
+	const fetchAllData = async () => {
+		try {
+			const invoicesResponse = await axios.get('http://localhost:3000/api/countInvoices');
+			const companiesResponse = await axios.get('http://localhost:3000/api/countCompanies');
+			const contactsResponse = await axios.get('http://localhost:3000/api/countContacts');
+			const contacts = await axios.get('http://localhost:3000/api/contact');
+			const invoices = await axios.get('http://localhost:3000/api/paginatedInvoices/5/0');
+			const companies = await axios.get('http://localhost:3000/api/company');
 
-	const dataTestCompanies = [
-		{
-			companyName: 'fSociety',
-			TVA: 'US456 654 321',
-			country: 'United States',
-		},
-		{
-			companyName: 'Dunder Mifflin',
-			TVA: 'BE0987 876 787',
-			country: 'Belgium',
-		},
-		{
-			companyName: 'Acme Corp',
-			TVA: 'NE 676 676 676',
-			country: 'Netherlands',
-		},
-		{
-			companyName: 'Heisenberg',
-			TVA: 'BE0987 876 787',
-			country: 'Belgium',
-		},
-	];
+			return {
+				nbInvoices: invoicesResponse.data.data.total,
+				nbCompanies: companiesResponse.data.data.total,
+				nbContacts: contactsResponse.data.data.total,
+				contacts: contacts.data.data,
+				invoices: invoices.data.data,
+				companies: companies.data.data,
+			};
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	};
 
-	const dataTestContacts = [
-		{
-			name: 'Sam Sepiol',
-			phone: '123-456-7890',
-			email: 'samsepiol@example.com',
-		},
-		{
-			name: 'Walter White',
-			phone: '123-456-7890',
-			email: 'walterwhite@example.com',
-		},
-		{
-			name: 'Michael Scott',
-			phone: '123-456-7890',
-			email: 'michaelscott@example.com',
-		},
-		{
-			name: 'Jonas Kahnwald',
-			phone: '123-456-7890',
-			email: 'jonaskahnwald@example.com',
-		},
-		{
-			name: 'Dr. Ross Geller',
-			phone: '123-456-7890',
-			email: 'rossgeller@example.com',
-		},
-		{
-			name: 'Darlene Alderson',
-			phone: '123-456-7890',
-			email: 'darlenealderson@example.com',
-		},
-	];
+	const fetchData = async () => {
+		try {
+			const response = await fetchAllData();
+			if (response) {
+				setStats({
+					nbInvoices: response.nbInvoices,
+					nbCompanies: response.nbCompanies,
+					nbContacts: response.nbContacts,
+				});
+
+				const formattedContacts =
+					response.contacts?.map((contact: Contact) => ({
+						name: contact.name,
+						phone: contact.phone,
+						email: contact.email,
+					})) || [];
+
+				const formattedInvoices = response.invoices?.map((invoice: Invoice) => ({
+					invoiceNumber: invoice.ref,
+					dueDates: new Date(invoice.due_date).toLocaleDateString('fr-FR'),
+					company: invoice.company,
+				})) || [];
+
+				const formattedCompanies = response.companies?.map((company: Company) => ({
+					name: company.name,
+					tva: company.tva,
+					country: company.country,
+				}));
+
+				setContacts(formattedContacts);
+				setInvoices(formattedInvoices);
+				setCompanies(formattedCompanies);
+			}
+		} catch (error) {
+			console.error('Erreur lors de la récupération des données:', error);
+		}
+	};
+
+	useEffect(() => {
+		fetchData();
+	});
 
 	return (
 		<main>
@@ -94,12 +108,12 @@ export default function Dashboard() {
 					<Dashboard_header />
 					<div className='grid grid-cols-2 gap-8 z-30 absolute ml-12'>
 						<div className='flex flex-col gap-8'>
-							<Dashboard_stats />
-							<Dashboard_data_fetch title='Last Contacts' columns={['Name', 'Phone', 'Email']} data={dataTestContacts} />
+							<Dashboard_stats stats={stats} />
+							<Dashboard_data_fetch title='Last Contacts' columns={['Name', 'Phone', 'Email']} data={contacts} />
 						</div>
 						<div className='flex flex-col gap-8 '>
-							<Dashboard_data_fetch title='Last Invoices' columns={['Invoice Number', 'Invoice Date', 'Company']} data={dataTestInvoices} />
-							<Dashboard_data_fetch title='Last Companies' columns={['Company Name', 'TVA', 'Country']} data={dataTestCompanies} />
+							<Dashboard_data_fetch title='Last Invoices' columns={['Invoice Number', 'Invoice Date', 'Company']} data={invoices} />
+							<Dashboard_data_fetch title='Last Companies' columns={['Company Name', 'TVA', 'Country']} data={companies} />
 						</div>
 					</div>
 				</div>
