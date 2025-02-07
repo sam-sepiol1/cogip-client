@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -8,80 +8,70 @@ import Dashboard_menu from '../components/Dashboard_menu';
 import Dashboard_stats from '../components/Dashboard_stats';
 import Dashboard_data_fetch from '../components/Dashboard_data_fetch';
 
+interface Contact {
+	name: string;
+	phone: string;
+	email: string;
+}
+
 export default function Dashboard() {
-	// Mock data for the dashboard
-	// TODO : Delete this when backend is ready and connected
-
-	const dataTestInvoices = [
-		{
-			invoiceNumber: 'BE0987 876 787',
-			invoiceDate: '12/12/12',
-			company: 'fSociety',
-		},
-		{
-			invoiceNumber: 'BE0987 876 787',
-			invoiceDate: '13/08/15',
-			company: 'Dunder Mifflin',
-		},
-		{
-			invoiceNumber: 'BE0987 876 787',
-			invoiceDate: '25/03/20',
-			company: 'fSociety',
-		},
-		{
-			invoiceNumber: 'BE0987 876 787',
-			invoiceDate: '15/01/23',
-			company: 'fSociety',
-		},
-	];
-
-	const dataTestCompanies = [
-		{
-			companyName: 'fSociety',
-			TVA: 'US456 654 321',
-			country: 'United States',
-		},
-		{
-			companyName: 'Dunder Mifflin',
-			TVA: 'BE0987 876 787',
-			country: 'Belgium',
-		},
-		{
-			companyName: 'Acme Corp',
-			TVA: 'NE 676 676 676',
-			country: 'Netherlands',
-		},
-		{
-			companyName: 'Heisenberg',
-			TVA: 'BE0987 876 787',
-			country: 'Belgium',
-		},
-	];
-
-	const [contacts, setContacts] = useState([]);
-
-	const fetchData = async () => {
+	const fetchAllData = async () => {
 		try {
-			const response = await axios.get('http://localhost:3000/api/contact');
-			const data = response.data;
-			const filteredData = data.map((contact: { name: unknown; phone: unknown; email: unknown }) => ({
-				name: contact.name,
-				phone: contact.phone,
-				email: contact.email,
-			}));
-
-			setContacts(filteredData);
-			console.log('Fetched contacts');
-			
+			const invoicesResponse = await axios.get("http://localhost:3000/api/countInvoices");
+			const companiesResponse = await axios.get("http://localhost:3000/api/countCompanies");
+			const contactsResponse = await axios.get("http://localhost:3000/api/countContacts");
+			const contacts = await axios.get("http://localhost:3000/api/contact");
+			const invoices = await axios.get("http://localhost:3000/api/invoice");
+			const companies = await axios.get("http://localhost:3000/api/company");
+	
+			return {
+				nbInvoices: invoicesResponse.data.totalInvoices,
+				nbCompanies: companiesResponse.data.totalCompanies,
+				nbContacts: contactsResponse.data.totalContacts,
+				contacts: contacts.data,
+				invoices: invoices.data,
+				companies: companies.data,
+			}
 		} catch (error) {
-			console.error('Error fetching data:', error);
+			console.error("Error fetching data:", error);
 		}
 	};
+	const [stats, setStats] = useState({
+		nbInvoices: 0,
+		nbCompanies: 0,
+		nbContacts: 0,
+	});
+	const [contacts, setContacts] = useState([]);
+	const [invoices, setInvoices] = useState([]);
+	const [companies, setCompanies] = useState([]);
 
 	useEffect(() => {
-		(async () => { 
-			await fetchData();
-		})();
+		const fetchData = async () => {
+			try {
+				const response = await fetchAllData();
+				if (response) {
+					setStats({
+						nbInvoices: response.nbInvoices,
+						nbCompanies: response.nbCompanies,
+						nbContacts: response.nbContacts,
+					});
+
+					const formattedContacts =
+						response.contacts?.map((contact: Contact) => ({
+							name: contact.name,
+							phone: contact.phone,
+							email: contact.email,
+						})) || [];
+
+					setContacts(formattedContacts);
+					setInvoices(response.invoices);
+					setCompanies(response.companies);
+				}
+			} catch (error) {
+				console.error('Erreur lors de la récupération des données:', error);
+			}
+		};
+		fetchData();
 	}, []);
 
 	return (
@@ -92,12 +82,12 @@ export default function Dashboard() {
 					<Dashboard_header />
 					<div className='grid grid-cols-2 gap-8 z-30 absolute ml-12'>
 						<div className='flex flex-col gap-8'>
-							<Dashboard_stats />
+							<Dashboard_stats stats={stats} />
 							<Dashboard_data_fetch title='Last Contacts' columns={['Name', 'Phone', 'Email']} data={contacts} />
 						</div>
 						<div className='flex flex-col gap-8 '>
-							<Dashboard_data_fetch title='Last Invoices' columns={['Invoice Number', 'Invoice Date', 'Company']} data={dataTestInvoices} />
-							<Dashboard_data_fetch title='Last Companies' columns={['Company Name', 'TVA', 'Country']} data={dataTestCompanies} />
+							<Dashboard_data_fetch title='Last Invoices' columns={['Invoice Number', 'Invoice Date', 'Company']} data={invoices} />
+							<Dashboard_data_fetch title='Last Companies' columns={['Company Name', 'TVA', 'Country']} data={companies} />
 						</div>
 					</div>
 				</div>
