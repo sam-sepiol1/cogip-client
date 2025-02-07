@@ -9,12 +9,11 @@ import DatasDisplayer from "./components/DatasDisplayer";
 import Home_slogan from "./components/Home_slogan";
 import Footer from "@/app/components/Footer";
 
-
 interface Invoice {
     id: number;
     ref: string;
     due_date: string;
-    company_id: number;
+    company: string;
     created_at: string;
 }
 
@@ -23,7 +22,7 @@ interface Contact {
     name: string;
     phone: string;
     email: string;
-    company_id: number;
+    company: string;
     created_at: string;
 }
 
@@ -36,6 +35,10 @@ interface Company {
     created_at: string;
 }
 
+interface ApiResponse<T> {
+    data: T;
+}
+
 export default function HomePage() {
     const [invoices, setInvoices] = useState<Invoice[]>([]);
     const [contacts, setContacts] = useState<Contact[]>([]);
@@ -44,33 +47,25 @@ export default function HomePage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const invoicesRes = await axios.get<Invoice[]>(`http://localhost:3000/api/paginatedInvoices/5/0`);
-                const contactsRes = await axios.get<Contact[]>(`http://localhost:3000/api/sortedAscContacts/5/0`);
-                const companiesRes = await axios.get<Company[]>(`http://localhost:3000/api/ascSortedCompanies/5/0`);
+                const invoicesRes = await axios.get<ApiResponse<Invoice[]>>(`http://localhost:3000/api/paginatedInvoices/5/0`);
+                const contactsRes = await axios.get<ApiResponse<Contact[]>>(`http://localhost:3000/api/sortedAscContacts/5/0`);
+                const companiesRes = await axios.get<ApiResponse<Company[]>>(`http://localhost:3000/api/ascSortedCompanies/5/0`);
 
-                setInvoices(invoicesRes.data);
-                setContacts(contactsRes.data);
-                setCompanies(companiesRes.data);
-
-                console.log("Invoices:", invoicesRes.data);
-                console.log("Contacts:", contactsRes.data);
-                console.log("Companies:", companiesRes.data);
+                setInvoices(invoicesRes.data.data);
+                setContacts(contactsRes.data.data);
+                setCompanies(companiesRes.data.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
-
         fetchData();
-    });
-
-    console.log("Companies available :", companies);
+    }, []);
 
     const formattedInvoices = invoices.map(invoice => {
-        console.log(`Looking a company for id_company=${invoice.company_id}`);
-        const company = companies.find(c => c.id === invoice.company_id);
+        const company = companies.find(c => c.name === invoice.company);
 
         if (!company) {
-            console.warn(`No companies found for id_company=${invoice.company_id}`);
+            console.warn(`No companies found for company=${invoice.company}`);
         }
 
         return {
@@ -80,11 +75,10 @@ export default function HomePage() {
     });
 
     const formattedContacts = contacts.map(contact => {
-        console.log(`Looking a company for company_id=${contact.company_id}`);
-        const company = companies.find(c => c.id === contact.company_id);
+        const company = companies.find(c => c.name === contact.company);
 
         if (!company) {
-            console.warn(`No companies found for company_id=${contact.company_id}`);
+            console.warn(`No companies found for company=${contact.company}`);
         }
 
         return {
@@ -101,11 +95,11 @@ export default function HomePage() {
                 <DatasDisplayer
                     className="titlePage"
                     title="Last invoices"
-                    data={formattedInvoices.map(invoice => ({ ...invoice, key: invoice.id }))}
+                    data={formattedInvoices.map(invoice => ({ ...invoice, key: invoice.ref }))}
                     columns={[
                         { key: "ref", label: "Invoice number" },
                         { key: "due_date", label: "Due Dates" },
-                        { key: "company_id", label: "Company" },
+                        { key: "company", label: "Company" },
                         { key: "created_at", label: "Created at" }
                     ]}
                     limit={5}
