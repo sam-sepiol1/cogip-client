@@ -1,20 +1,57 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import DatasDisplayer from "../components/DatasDisplayer";
-import contactsData from "../components/Contacts";
+import Footer from "../components/Footer";
+
+interface Contact {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    company: string;
+    created_at: string;
+}
 
 export default function ContactsPage() {
+    const [contacts, setContacts] = useState<Contact[]>([]);
+    const limit = 10;
+    const offset = 0;
+
+    useEffect(() => {
+        const fetchContacts = async () => {
+            try {
+                console.log("Retrieving contacts...");
+                const response = await axios.get<Contact[]>(`http://localhost:3000/api/sortedAscContacts/${limit}/${offset}`);
+                console.log("Contacts recovered :", response.data);
+                setContacts(response.data);
+            } catch (error) {
+                console.error("Error retrieving contacts :", error);
+            }
+        };
+
+        fetchContacts();
+    }, [limit, offset]);
+
     return (
         <main>
             <Header />
 
-            <DatasDisplayer title="All Contacts" data={contactsData} columns={[
+            <DatasDisplayer
+                title="All Contacts"
+                data={contacts}
+                columns={[
                     { key: "name", label: "Name" },
                     { key: "phone", label: "Phone" },
-                    { key: "mail", label: "Mail" },
+                    { key: "email", label: "Mail" },
                     { key: "company", label: "Company" },
-                    { key: "created", label: "Created at" }
-                ]} searchPlaceholder="Search contact" />
+                    { key: "created_at", label: "Created at" }
+                ]}
+                searchPlaceholder="Search contact"
+            />
 
             <Footer />
         </main>
