@@ -14,7 +14,7 @@ interface Invoice {
     id: number;
     ref: string;
     due_date: string;
-    id_company: number;
+    company_id: number;
     created_at: string;
 }
 
@@ -40,15 +40,13 @@ export default function HomePage() {
     const [invoices, setInvoices] = useState<Invoice[]>([]);
     const [contacts, setContacts] = useState<Contact[]>([]);
     const [companies, setCompanies] = useState<Company[]>([]);
-    const limit = 10;
-    const offset = 0;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const invoicesRes = await axios.get<Invoice[]>(`http://localhost:3000/api/paginatedInvoices/${limit}/${offset}`);
-                const contactsRes = await axios.get<Contact[]>(`http://localhost:3000/api/sortedAscContacts/${limit}/${offset}`);
-                const companiesRes = await axios.get<Company[]>(`http://localhost:3000/api/ascSortedCompanies/${limit}/${offset}`);
+                const invoicesRes = await axios.get<Invoice[]>(`http://localhost:3000/api/paginatedInvoices/5/0`);
+                const contactsRes = await axios.get<Contact[]>(`http://localhost:3000/api/sortedAscContacts/5/0`);
+                const companiesRes = await axios.get<Company[]>(`http://localhost:3000/api/ascSortedCompanies/5/0`);
 
                 setInvoices(invoicesRes.data);
                 setContacts(contactsRes.data);
@@ -63,16 +61,16 @@ export default function HomePage() {
         };
 
         fetchData();
-    }, [limit, offset]);
+    });
 
     console.log("Companies available :", companies);
 
     const formattedInvoices = invoices.map(invoice => {
-        console.log(`Looking a company for id_company=${invoice.id_company}`);
-        const company = companies.find(c => c.id === invoice.id_company);
+        console.log(`Looking a company for id_company=${invoice.company_id}`);
+        const company = companies.find(c => c.id === invoice.company_id);
 
         if (!company) {
-            console.warn(`No companies found for id_company=${invoice.id_company}`);
+            console.warn(`No companies found for id_company=${invoice.company_id}`);
         }
 
         return {
@@ -107,7 +105,7 @@ export default function HomePage() {
                     columns={[
                         { key: "ref", label: "Invoice number" },
                         { key: "due_date", label: "Due Dates" },
-                        { key: "company", label: "Company" },
+                        { key: "company_id", label: "Company" },
                         { key: "created_at", label: "Created at" }
                     ]}
                     limit={5}

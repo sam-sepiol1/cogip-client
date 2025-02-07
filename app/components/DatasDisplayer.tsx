@@ -64,16 +64,16 @@ export default function DatasDisplayer<T extends { id: number }>({ title, data, 
                 <table className="table-auto w-full mt-10">
                     <thead className="titleTable">
                     <tr className="background-yellow">
-                        {columns.map((col) => (
-                            <th key={String(col.key)} className="p-4">{col.label}</th>
+                        {columns.map((col, index) => (
+                            <th key={`$String(col.key)-${index}`} className="p-4">{col.label}</th>
                         ))}
                     </tr>
                     </thead>
                     <tbody className="fontDataTable">
                     {filteredData.slice(0, limit || filteredData.length).map((item, index) => (
-                        <tr key={item.id} className={index % 2 === 0 ? "bg-white" : "bg-[#F5F5F5]"}>
+                        <tr key={`$String(item.id)-${index}`} className={index % 2 === 0 ? "bg-white" : "bg-[#F5F5F5]"}>
                             {columns.map((col) => (
-                                <td key={String(col.key)} className="p-4">
+                                <td key={`${item.id}-${String(col.key)}`} className="p-4">
                                     {["date", "created"].some(keyword => String(col.key).toLowerCase().includes(keyword))
                                         ? formatDate(item[col.key] as string)
                                         : String(item[col.key])}
