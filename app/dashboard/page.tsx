@@ -35,6 +35,7 @@ export default function Dashboard() {
 	const [contacts, setContacts] = useState([]);
 	const [invoices, setInvoices] = useState([]);
 	const [companies, setCompanies] = useState([]);
+
 	const fetchAllData = async () => {
 		try {
 			const invoicesResponse = await axios.get('http://localhost:3000/api/countInvoices');
@@ -45,12 +46,12 @@ export default function Dashboard() {
 			const companies = await axios.get('http://localhost:3000/api/company');
 
 			return {
-				nbInvoices: invoicesResponse.data.totalInvoices,
-				nbCompanies: companiesResponse.data.totalCompanies,
-				nbContacts: contactsResponse.data.totalContacts,
-				contacts: contacts.data,
-				invoices: invoices.data,
-				companies: companies.data,
+				nbInvoices: invoicesResponse.data.data.total,
+				nbCompanies: companiesResponse.data.data.total,
+				nbContacts: contactsResponse.data.data.total,
+				contacts: contacts.data.data,
+				invoices: invoices.data.data,
+				companies: companies.data.data,
 			};
 		} catch (error) {
 			console.error('Error fetching data:', error);
