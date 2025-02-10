@@ -46,9 +46,9 @@ export default function Dashboard() {
 			const companies = await axios.get('http://localhost:3000/api/company');
 
 			return {
-				nbInvoices: invoicesResponse.data.data.total,
-				nbCompanies: companiesResponse.data.data.total,
-				nbContacts: contactsResponse.data.data.total,
+				nbInvoices: invoicesResponse.data.total,
+				nbCompanies: companiesResponse.data.total,
+				nbContacts: contactsResponse.data.total,
 				contacts: contacts.data.data,
 				invoices: invoices.data.data,
 				companies: companies.data.data,
