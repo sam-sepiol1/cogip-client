@@ -18,23 +18,21 @@ interface Invoice {
 
 export default function InvoicePage() {
     const [invoices, setInvoices] = useState<Invoice[]>([]);
-    const limit = 10;
-    const offset = 0;
 
     useEffect(() => {
         const fetchInvoices = async () => {
             try {
                 console.log("Retrieving invoices...");
-                const response = await axios.get<Invoice[]>(`http://localhost:3000/api/paginatedInvoices/${limit}/${offset}`);
-                console.log("Invoices recovered :", response.data);
-                setInvoices(response.data);
+                const response = await axios.get<Invoice[]>(`http://localhost:3000/api/paginatedInvoices/10/0`);
+
+                setInvoices(response.data.data);
             } catch (error) {
                 console.error("Error retrieving invoices :", error);
             }
         };
 
         fetchInvoices();
-    }, [limit, offset]);
+    }, []);
 
     return (
         <main>
