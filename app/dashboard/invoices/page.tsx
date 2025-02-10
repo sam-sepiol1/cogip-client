@@ -30,6 +30,7 @@ export default function Dashboard_contacts() {
 		const company_id = companyResponse.data[0].id;
 		try {
 			const response = await axios.post('http://localhost:3000/api/invoice', {
+                ref: formData.ref,
 				company_id: company_id,
 				price: formData.price,
 			});
