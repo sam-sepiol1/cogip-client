@@ -18,23 +18,20 @@ interface Contact {
 
 export default function ContactsPage() {
     const [contacts, setContacts] = useState<Contact[]>([]);
-    const limit = 10;
-    const offset = 0;
 
     useEffect(() => {
         const fetchContacts = async () => {
             try {
                 console.log("Retrieving contacts...");
-                const response = await axios.get<Contact[]>(`http://localhost:3000/api/sortedAscContacts/${limit}/${offset}`);
-                console.log("Contacts recovered :", response.data);
-                setContacts(response.data);
+                const response = await axios.get<Contact[]>(`http://localhost:3000/api/sortedAscContacts/10/0`);
+                setContacts(response.data.data);
             } catch (error) {
                 console.error("Error retrieving contacts :", error);
             }
         };
 
         fetchContacts();
-    }, [limit, offset]);
+    }, []);
 
     return (
         <main>
