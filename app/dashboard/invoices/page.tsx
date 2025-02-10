@@ -9,6 +9,7 @@ import New_entry_form from '../../components/New_entry_form';
 
 export default function Dashboard_contacts() {
 	const [formData, setFormData] = useState({
+        ref: '',
         company: '',
         price: '',
 	});
