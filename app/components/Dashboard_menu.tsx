@@ -32,13 +32,13 @@ export default function Dashboard_menu() {
 						</li>
 						<li className='dashboard_menu-item flex gap-7 w-full'>
 							<Image src='/Dashboard/Dashboard_companies-icon.svg' alt='Companies icon' width={22} height={22} />
-							<a className={`hover:font-bold w-full ${pathname === '/dashboard_companies' ? 'font-semibold relative selected' : ''}`} href='/dashboard_companies'>
+							<a className={`hover:font-bold w-full ${pathname === '/dashboard/companies' ? 'font-semibold relative selected' : ''}`} href='/dashboard/companies'>
 								Companies
 							</a>
 						</li>
 						<li className='dashboard_menu-item flex gap-7 w-full'>
 							<Image src='/Dashboard/Dashboard_contacts-icon.svg' alt='Contacts icon' width={22} height={22} />
-							<a className={`hover:font-bold w-full ${pathname === '/dashboard_contacts' ? 'font-semibold relative selected' : ''}`} href='/dashboard_contacts'>
+							<a className={`hover:font-bold w-full ${pathname === '/dashboard/contacts' ? 'font-semibold relative selected' : ''}`} href='/dashboard/contacts'>
 								Contacts
 							</a>
 						</li>
