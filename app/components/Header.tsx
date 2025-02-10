@@ -27,8 +27,12 @@ export default function Header() {
                     </nav>
 
                     <div className="font-nav-header flex flex-row gap-5">
-                        <button className="bg-white w-[102px] h-[37px] rounded-[10px]">Sign up</button>
-                        <button>Login</button>
+                        <a href="/register">
+                            <button className="bg-white w-[102px] h-[37px] rounded-[10px]">Sign up</button>
+                        </a>
+                        <a href="/login" className="mt-1.5">
+                            <button>Login</button>
+                        </a>
                     </div>
                 </header>
 
