@@ -18,21 +18,19 @@ interface Company {
 
 export default function CompaniesPage() {
     const [companies, setCompanies] = useState<Company[]>([]);
-    const limit = 10;
-    const offset = 0;
 
     useEffect(() => {
         const fetchCompanies = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/ascSortedCompanies/${limit}/${offset}`);
-                setCompanies(response.data);
+                const response = await axios.get(`http://localhost:3000/api/ascSortedCompanies/10/0`);
+                setCompanies(response.data.data);
             } catch (error) {
                 console.error("Error fetching companies:", error);
             }
         };
 
         fetchCompanies();
-    }, [limit, offset]);
+    }, []);
 
     return (
         <main>
