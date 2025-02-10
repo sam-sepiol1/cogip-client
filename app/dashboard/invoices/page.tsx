@@ -46,11 +46,11 @@ export default function Dashboard_contacts() {
 					<Dashboard_header />
 					<New_entry_form
 						title='New Invoice'
-						fields={['company', 'price']}
+						fields={['company', 'price', 'ref']}
 						submitText='Create Invoice'
 						onChange={handleChange}
 						onSubmit={handleSubmit}
-						placeholders={['Company', 'Price']}
+						placeholders={['Company', 'Price', 'Reference']}
 						errorMessage={''}
 					/>
 				</div>
