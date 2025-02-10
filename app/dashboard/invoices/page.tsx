@@ -1,13 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import axios from 'axios';
+import axios from 'axios'
+import { useRouter } from 'next/navigation';
 
 import Dashboard_header from '../../components/Dashboard_header';
 import Dashboard_menu from '../../components/Dashboard_menu';
 import New_entry_form from '../../components/New_entry_form';
 
-export default function Dashboard_contacts() {
+export default function Dashboard_invoices() {
+    const router = useRouter();
+
 	const [formData, setFormData] = useState({
 		ref: '',
 		company: '',
@@ -33,7 +36,9 @@ export default function Dashboard_contacts() {
 					id_company: company_id,
 					price: formData.price,
 				});
-				console.log('Invoice created :', response.data);
+				if (response.status === 201) {
+                    router.push('/dashboard');
+				}
 			} else {
 				console.error('Company not found');
 			}
@@ -51,6 +56,7 @@ export default function Dashboard_contacts() {
 					<New_entry_form title='New Invoice' fields={['company', 'price', 'ref']} submitText='Create Invoice' onChange={handleChange} onSubmit={handleSubmit} placeholders={['Company', 'Price', 'Reference']} errorMessage={''} />
 				</div>
 			</div>
-		</main>
+        </main>
 	);
 }
+    
