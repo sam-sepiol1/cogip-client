@@ -70,7 +70,7 @@ export default function Dashboard_invoices() {
 				<div className='flex flex-col ml-[300px] w-full dashboard_background h-screen justify-center '>
 					<Dashboard_header />
 					<New_entry_form title='New Invoice' fields={['company', 'price', 'ref']} submitText='Create Invoice' onChange={handleChange} onSubmit={handleSubmit} placeholders={['Company', 'Price', 'Reference']} errorMessage={''} formData={formData} />
-					<ToastContainer className="" />
+					<ToastContainer/>
 				</div>
 			</div>
 		</main>
