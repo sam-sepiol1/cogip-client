@@ -26,14 +26,15 @@ export default function Dashboard_contacts() {
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
+		// const companyResponse = await axios.get(`http://localhost:3000/api/searchCompany/${formData.company}`);		
+		// const company_id = companyResponse.data[0].id;
+		// console.log(company_id);
 		
-		const companyResponse = await axios.get(`http://localhost:3000/api/searchCompany/${formData.company}`);		
-		const company_id = companyResponse.data[0].id;
 		try {
 			const response = await axios.post('http://localhost:3000/api/contact', {
 				name: formData.name,
 				email: formData.email,
-				company_id: company_id,
+				company_name: formData.company,
 				phone: formData.phone,
 			});
 			console.log('Contact created :', response.data);
@@ -51,7 +52,7 @@ export default function Dashboard_contacts() {
 					<New_entry_form
 						title='New Contact'
 						fields={['name', 'phone', 'email', 'company']}
-						submitText='Create company'
+						submitText='Create Contact'
 						onChange={handleChange}
 						onSubmit={handleSubmit}
 						placeholders={['Name', 'Phone Number', 'Email', 'Company']}
