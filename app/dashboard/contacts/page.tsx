@@ -19,16 +19,11 @@ export default function Dashboard_contacts() {
 		setFormData({
 			...formData,
 			[name]: value,
-		});
-		console.log(formData);
-		
+		});		
 	};
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		// const companyResponse = await axios.get(`http://localhost:3000/api/searchCompany/${formData.company}`);		
-		// const company_id = companyResponse.data[0].id;
-		// console.log(company_id);
 		
 		try {
 			const response = await axios.post('http://localhost:3000/api/contact', {
@@ -57,6 +52,7 @@ export default function Dashboard_contacts() {
 						onSubmit={handleSubmit}
 						placeholders={['Name', 'Phone Number', 'Email', 'Company']}
 						errorMessage={''}
+						formData={formData}
 					/>
 				</div>
 			</div>
