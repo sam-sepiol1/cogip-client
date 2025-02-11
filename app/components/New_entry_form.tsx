@@ -8,9 +8,10 @@ interface Props {
     onChange: (name: string, value: string) => void;
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
     errorMessage: string;
+    formData: { [key: string]: string };
 }
 
-export default function New_entry_form({ title, fields, submitText, placeholders, onChange, onSubmit, errorMessage }: Props) {
+export default function New_entry_form({ title, fields, submitText, placeholders, onChange, onSubmit, errorMessage, formData }: Props) {
     return (
         <main id="form-section" className="flex flex-col justify-center items-center w-full p-7 dashboard_form bg-white rounded-lg mb-14 ">
             <h1 className="text-xl font-bold mb-4">{title}</h1>
@@ -24,6 +25,7 @@ export default function New_entry_form({ title, fields, submitText, placeholders
                                 type="text"
                                 name={field}
                                 id={field}
+                                value={formData[field] || ''}
                                 placeholder={placeholders[index]}
                                 onChange={(e) => onChange(field, e.target.value.toLowerCase())}
                                 required />
