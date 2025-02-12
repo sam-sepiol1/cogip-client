@@ -2,18 +2,23 @@
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 
-export default function Dashboard_menu() {
+interface DashboardMenuProps {
+  firstName: string;
+  lastName: string;
+}
+
+export default function Dashboard_menu({ firstName, lastName }: DashboardMenuProps) {
 	const pathname = usePathname();
 
 	return (
 		<main className='fixed'>
-			<aside className='flex flex-col dashboard_menu w-[300px] pt-16'>
+			<aside className='flex flex-col dashboard_menu w-[300px] pt-16 h-[100vh]'>
 				<div className='profile_infos flex flex-col items-center'>
 					<picture className='mb-4'>
 						<Image src='/Dashboard/Dashboard_profile-picture.png' alt='Profile picture' width={100} height={100} />
 					</picture>
-					<span className='font-black text-2xl dashboard-menu-name'>Henry</span>
-					<span className='font-black text-2xl dashboard-menu-name'>Georges</span>
+					<span className='font-black text-2xl dashboard-menu-name'>{firstName}</span>
+					<span className='font-black text-2xl dashboard-menu-name'>{lastName}</span>
 				</div>
 				<hr className='w-[95%] mt-10' />
 				<div className='nav flex'>
@@ -44,7 +49,7 @@ export default function Dashboard_menu() {
 						</li>
 					</ul>
 				</div>
-				<div className='logout w-full dashboard-menu-logout mt-[47vh]'>
+				<div className='logout w-full dashboard-menu-logout absolute bottom-[10px] '>
 					<hr className='w-[95%] mb-2' />
 					<div className='flex items-center justify-between px-4'>
 						<Image src='/Dashboard/Dashboard_profile-picture.png' alt='Profile picture' width={48} height={48} />

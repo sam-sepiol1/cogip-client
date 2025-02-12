@@ -1,11 +1,11 @@
 import Image from 'next/image';
 
-export default function Dashboard_header() {
-	// Mock data for the header
-	// TODO : Delete this when backend is ready and connected
-	const dataTest = {
-		username: 'Sam Sepiol',
-	};
+interface DashboardHeaderProps {
+  username: string;
+}
+
+export default function Dashboard_header({ username }: DashboardHeaderProps) {
+
 
 	return (
 		<main>
@@ -16,7 +16,7 @@ export default function Dashboard_header() {
 				</div>
 				<div className='dashboard_hero background-header p-16 text-white rounded-xl flex flex-row gap-4'>
 					<div className='dashboard_hero_infos'>
-						<h2 className='text-4xl font-bold'> Welcome back, {dataTest.username}</h2>
+						<h2 className='text-4xl font-bold'> Welcome back, {username}</h2>
 						<p className='w-[70%] pl-1.5'> You can here add an invoice, a company and some contacts </p>
 						<div className='dashboard_hero_illustration top-0 right-[100px] absolute'>
 							<Image className='z-10' src='/Dashboard_Header/dashboard-header_illustration.png' alt='illustration' width={417} height={332} />

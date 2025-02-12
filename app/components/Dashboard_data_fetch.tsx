@@ -6,7 +6,7 @@ interface DynamicTableProps {
 
 export default function DynamicTable({ title, columns, data }: DynamicTableProps) {
 	return (
-		<div className='font-bold text-lg bg-white border-[#E0E0E0]'>
+		<main className='font-bold text-lg p-4 bg-white rounded-xl dashboard_drop-shadow'>
 			<h2 className='w-full text-left'>{title}</h2>
 			<hr className='w-[85%] text-left mt-4 mb-8 ' />
 			<table className='w-full px-8'>
@@ -31,6 +31,6 @@ export default function DynamicTable({ title, columns, data }: DynamicTableProps
                         ))}
 				</tbody>
 			</table>
-		</div>
+		</main>
 	);
 }
