@@ -78,6 +78,7 @@ export default function Dashboard_companies() {
 						onSubmit={handleSubmit}
 						placeholders={['Company name', 'TVA', 'Country', 'Type']}
 						errorMessage={errorMessage}
+						formData={formData}
 					/>
 				</div>
 			</div>
