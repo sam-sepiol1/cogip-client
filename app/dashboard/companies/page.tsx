@@ -1,15 +1,13 @@
 'use client';
 import { useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import { ToastContainer, toast } from 'react-toastify';
 
 import Dashboard_menu from '../../components/Dashboard_menu';
 import Dashboard_header from '../../components/Dashboard_header';
 import New_entry_form from '../../components/New_entry_form';
 
 export default function Dashboard_companies() {
-	const router = useRouter();
-
 	const companyTypes: Record<string, number> = {
 		'sarl': 1,
 		'sa': 2,
@@ -53,14 +51,36 @@ export default function Dashboard_companies() {
 			});
 
 			if (response.status === 201) {
-				router.push('/dashboard');
-			}
+				setFormData({
+					companyName: '',
+					tva: '',
+					country: '',
+					type: '',
+				});
 
-			console.log('Company created :', response.data);
-			setErrorMessage('');
+				toast.success('Company created successfully', {
+					position: 'bottom-right',
+					autoClose: 2000,
+					hideProgressBar: true,
+					closeOnClick: true,
+					pauseOnHover: false,
+					draggable: true,
+					progress: undefined,
+					theme: 'light',
+				});
+			}
 		} catch (error) {
-			console.error('Error during creation:', error);
-			setErrorMessage('Error during creation. Please try again.');
+			console.error('Error creating company:', error);
+			toast.error('Error during creation. Please try again.', {
+				position: 'bottom-right',
+				autoClose: 2000,
+				hideProgressBar: true,
+				closeOnClick: true,
+				pauseOnHover: false,
+				draggable: true,
+				progress: undefined,
+				theme: 'light',
+			});
 		}
 	};
 
@@ -82,6 +102,7 @@ export default function Dashboard_companies() {
 					/>
 				</div>
 			</div>
+			<ToastContainer />
 		</main>
 	);
 }
