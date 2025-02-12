@@ -160,16 +160,6 @@ body {
 .dashboard_background {
   background-color: #e5e5e5;
 }
-
-/*Check si encore use !*/
-.dashboard-font-title {
-  font-family: Inter, sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 24.2px;
-  text-align: left;
-}
-
 .dashboard-input {
   height: 60px;
   background-color: #F5F5F5;
