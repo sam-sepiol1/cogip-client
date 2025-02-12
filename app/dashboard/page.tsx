@@ -35,6 +35,8 @@ export default function Dashboard() {
 	const [contacts, setContacts] = useState([]);
 	const [invoices, setInvoices] = useState([]);
 	const [companies, setCompanies] = useState([]);
+	const [firstName, setFirstName] = useState('');
+	const [lastName, setLastName] = useState('');
 
 	const fetchAllData = async () => {
 		try {
@@ -44,6 +46,7 @@ export default function Dashboard() {
 			const contacts = await axios.get('http://localhost:3000/api/contact');
 			const invoices = await axios.get('http://localhost:3000/api/paginatedInvoices/5/0');
 			const companies = await axios.get('http://localhost:3000/api/company');
+			const user = await axios.get('http://localhost:3000/api/users');
 
 			return {
 				nbInvoices: invoicesResponse.data.total,
@@ -52,6 +55,8 @@ export default function Dashboard() {
 				contacts: contacts.data.data,
 				invoices: invoices.data.data,
 				companies: companies.data.data,
+				firstName: user.data[0].first_name,
+				lastName: user.data[0].last_name
 			};
 		} catch (error) {
 			console.error('Error fetching data:', error);
@@ -87,6 +92,9 @@ export default function Dashboard() {
 					country: company.country,
 				}));
 
+				setFirstName(response.firstName);
+				setLastName(response.lastName);
+
 				setContacts(formattedContacts);
 				setInvoices(formattedInvoices);
 				setCompanies(formattedCompanies);
@@ -101,12 +109,12 @@ export default function Dashboard() {
 	}, []);
 
 	return (
-		<main>
+		<main className='bg-[#E7E7E7]'>
 			<div className='flex h-screen'>
-				<Dashboard_menu />
+				<Dashboard_menu firstName={firstName} lastName={lastName} />
 				<div className='flex-1 overflow-y-auto ml-[300px]'>
-					<Dashboard_header />
-					<div className='grid grid-cols-2 gap-8 z-30 absolute ml-12'>
+					<Dashboard_header username={`${firstName} ${lastName}`} />
+					<div className='grid grid-cols-2 gap-8 z-30 px-12'>
 						<div className='flex flex-col gap-8'>
 							<Dashboard_stats stats={stats} />
 							<Dashboard_data_fetch title='Last Contacts' columns={['Name', 'Phone', 'Email']} data={contacts} />
