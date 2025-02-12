@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# COGIP Client
 
-## Getting Started
+This is the client-side application for the COGIP project.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [COGIP Client](#cogip-client)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Disclaimer](#disclaimer)
+  - [Credits](#credits)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Introduction
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The COGIP Client is a web application designed to manage invoices, companies, and contacts for the COGIP organization. It provides a user-friendly interface to interact with the COGIP backend API.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+To install and run the COGIP Client locally, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. Be assured that the backend is downloaded and running.
+You can download it at [COGIP Backend Repository](https://github.com/sam-sepiol1/cogip-api).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    
+2. Clone the repository:
+    ```bash
+    git clone https://github.com/sam-sepiol1/cogip-client.git
+    ```
+3. Navigate to the project directory:
+    ```bash
+    cd cogip-client
+    ```
+4. Install the dependencies:
+    ```bash
+    npm install
+    ```
+5. Start the development server:
+    ```bash
+    npm start
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Usage
 
-## Deploy on Vercel
+Once the development server is running, you can access the application in your web browser at `http://localhost:3001`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Disclaimer 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This app is not deployed and was designed only for practice purposes.
+The Login and Signup functionalities are currently under development.
+
+Here's a few screenshots of the app:
+
+![COGIP Client Screenshot](/public/Readme/Home.png)
+![COGIP Client Screenshot](/public/Readme/Invoices.png)
+![COGIP Client Screenshot](/public/Readme/Admin-dashboard.png)
+![COGIP Client Screenshot](/public/Readme/Admin-dashboard_form.png)
+
+
+## Credits 
+
+This app was designed by a team of 4 developers:
+- [Sebastien S.](https://github.com/sam-sepiol1) : Front End Developer
+- [Cristelle H](https://github.com/KikiMaouw) : Front End Developer        
+- [Stephen Chevalier](https://github.com/Neogiciaa) : Back End Developer and Project Manager          
+- [Mohamed B.](https://github.com/Mominho11) : Back End Developer
