@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
 import Dashboard_header from '../../components/Dashboard_header';
 import Dashboard_menu from '../../components/Dashboard_menu';
@@ -19,12 +20,12 @@ export default function Dashboard_contacts() {
 		setFormData({
 			...formData,
 			[name]: value,
-		});		
+		});
 	};
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		
+
 		try {
 			const response = await axios.post('http://localhost:3000/api/contact', {
 				name: formData.name,
@@ -32,9 +33,19 @@ export default function Dashboard_contacts() {
 				company_name: formData.company,
 				phone: formData.phone,
 			});
-			console.log('Contact created :', response.data);
+
+			if (response.status === 201) {
+				setFormData({
+					name: '',
+					email: '',
+					company: '',
+					phone: '',
+				});
+				toast.success('Contact created successfully');
+			}
 		} catch (error) {
 			console.error('Error during creation:', error);
+			toast.error('Error during creation. Please try again.');
 		}
 	};
 
@@ -56,6 +67,7 @@ export default function Dashboard_contacts() {
 					/>
 				</div>
 			</div>
+			<ToastContainer autoClose={2000} position='bottom-right' hideProgressBar={false} closeOnClick={true} pauseOnHover={true} draggable={true} theme='light' />
 		</main>
 	);
 }
