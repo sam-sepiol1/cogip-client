@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -13,6 +13,19 @@ export default function Dashboard_invoices() {
 		company: '',
 		price: '',
 	});
+
+	const [firstName, setFirstName] = useState('');
+	const [lastName, setLastName] = useState('');
+
+	useEffect(() => {
+		const fetchUser = async () => {
+			const user = await axios.get('http://localhost:3000/api/users');
+			setFirstName(user.data[0].first_name);
+			setLastName(user.data[0].last_name);
+		};
+
+		fetchUser();
+	}, []);
 
 	const handleChange = (name: string, value: string) => {
 		setFormData({
@@ -66,9 +79,9 @@ export default function Dashboard_invoices() {
 	return (
 		<main className=''>
 			<div className='flex'>
-				<Dashboard_menu />
+				<Dashboard_menu firstName={firstName} lastName={lastName}  />
 				<div className='flex flex-col ml-[300px] w-full dashboard_background h-screen justify-center '>
-					<Dashboard_header />
+					<Dashboard_header username={firstName} />
 					<New_entry_form title='New Invoice' fields={['company', 'price', 'ref']} submitText='Create Invoice' onChange={handleChange} onSubmit={handleSubmit} placeholders={['Company', 'Price', 'Reference']} errorMessage={''} formData={formData} />
 					<ToastContainer/>
 				</div>

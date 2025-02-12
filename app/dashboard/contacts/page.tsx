@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -9,6 +9,9 @@ import Dashboard_menu from '../../components/Dashboard_menu';
 import New_entry_form from '../../components/New_entry_form';
 
 export default function Dashboard_contacts() {
+	const [firstName, setFirstName] = useState('');
+	const [lastName, setLastName] = useState('');
+
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
@@ -49,12 +52,22 @@ export default function Dashboard_contacts() {
 		}
 	};
 
+	useEffect(() => {
+		const fetchUser = async () => {
+			const user = await axios.get('http://localhost:3000/api/users');
+			setFirstName(user.data[0].first_name);
+			setLastName(user.data[0].last_name);
+		};
+
+		fetchUser();
+	}, []);
+
 	return (
 		<main className=''>
 			<div className='flex'>
-				<Dashboard_menu />
+				<Dashboard_menu firstName={firstName} lastName={lastName} />
 				<div className='flex flex-col ml-[300px] w-full dashboard_background h-screen justify-center '>
-					<Dashboard_header />
+					<Dashboard_header username={`${firstName}`} />
 					<New_entry_form
 						title='New Contact'
 						fields={['name', 'phone', 'email', 'company']}

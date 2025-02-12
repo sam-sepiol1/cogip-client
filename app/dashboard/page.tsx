@@ -108,12 +108,14 @@ export default function Dashboard() {
 		fetchData();
 	}, []);
 
+	
+
 	return (
-		<main className='bg-[#E7E7E7]'>
+		<main className='dashboard_background'>
 			<div className='flex h-screen'>
 				<Dashboard_menu firstName={firstName} lastName={lastName} />
 				<div className='flex-1 overflow-y-auto ml-[300px]'>
-					<Dashboard_header username={`${firstName} ${lastName}`} />
+					<Dashboard_header username={`${firstName}`} />
 					<div className='grid grid-cols-2 gap-8 z-30 px-12'>
 						<div className='flex flex-col gap-8'>
 							<Dashboard_stats stats={stats} />
