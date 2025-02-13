@@ -4,15 +4,12 @@ import Login_register_header from "@/app/components/Login_register_header";
 import React, { useState } from "react";
 import axios from "axios";
 import New_entry_form from "@/app/components/New_entry_form";
-import { useRouter } from "next/navigation";
 
 export default function Register() {
-    const router = useRouter();
-
     const [dto, setDto] = useState({
         first_name: '',
         last_name: '',
-        role_id: 3,
+        role_id: '3',
         email: '',
         password: ''
     });
@@ -37,7 +34,8 @@ export default function Register() {
             }
 
             try {
-                router.push('/dashboard');
+                // router.push('/dashboard');
+                window.location.href = '/dashboard';
 
             } catch (error) {
                 console.error("Redirect error -> ", error);
@@ -60,6 +58,7 @@ export default function Register() {
                 onSubmit={handleSubmitForm}
                 submitText="C'est parti"
                 errorMessage={error}
+                formData={dto}
             />
             )
         </main>
