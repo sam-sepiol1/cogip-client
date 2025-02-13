@@ -26,7 +26,6 @@ interface Company {
 }
 
 export default function Dashboard() {
-
 	const [stats, setStats] = useState({
 		nbInvoices: 0,
 		nbCompanies: 0,
@@ -35,8 +34,7 @@ export default function Dashboard() {
 	const [contacts, setContacts] = useState([]);
 	const [invoices, setInvoices] = useState([]);
 	const [companies, setCompanies] = useState([]);
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
+	const [user, setUser] = useState<{ first_name: string; last_name: string }>({ first_name: '', last_name: '' });
 
 	const fetchAllData = async () => {
 		try {
@@ -46,7 +44,6 @@ export default function Dashboard() {
 			const contacts = await axios.get('http://localhost:3000/api/contact');
 			const invoices = await axios.get('http://localhost:3000/api/paginatedInvoices/5/0');
 			const companies = await axios.get('http://localhost:3000/api/company');
-			const user = await axios.get('http://localhost:3000/api/users');
 
 			return {
 				nbInvoices: invoicesResponse.data.total,
@@ -55,67 +52,67 @@ export default function Dashboard() {
 				contacts: contacts.data.data,
 				invoices: invoices.data.data,
 				companies: companies.data.data,
-				firstName: user.data[0].first_name,
-				lastName: user.data[0].last_name
 			};
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
 	};
 
-	const fetchData = async () => {
-		try {
-			const response = await fetchAllData();
-			if (response) {
-				setStats({
-					nbInvoices: response.nbInvoices,
-					nbCompanies: response.nbCompanies,
-					nbContacts: response.nbContacts,
-				});
-
-				const formattedContacts =
-					response.contacts?.map((contact: Contact) => ({
-						name: contact.name,
-						phone: contact.phone,
-						email: contact.email,
-					})) || [];
-
-				const formattedInvoices = response.invoices?.map((invoice: Invoice) => ({
-					invoiceNumber: invoice.ref,
-					dueDates: new Date(invoice.due_date).toLocaleDateString('fr-FR'),
-					company: invoice.company,
-				})) || [];
-
-				const formattedCompanies = response.companies?.map((company: Company) => ({
-					name: company.name,
-					tva: company.tva,
-					country: company.country,
-				}));
-
-				setFirstName(response.firstName);
-				setLastName(response.lastName);
-
-				setContacts(formattedContacts);
-				setInvoices(formattedInvoices);
-				setCompanies(formattedCompanies);
-			}
-		} catch (error) {
-			console.error('Erreur lors de la récupération des données:', error);
-		}
-	};
-
 	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await fetchAllData();
+				if (response) {
+					setStats({
+						nbInvoices: response.nbInvoices,
+						nbCompanies: response.nbCompanies,
+						nbContacts: response.nbContacts,
+					});
+
+					const formattedContacts =
+						response.contacts?.map((contact: Contact) => ({
+							name: contact.name,
+							phone: contact.phone,
+							email: contact.email,
+						})) || [];
+
+					const formattedInvoices =
+						response.invoices?.map((invoice: Invoice) => ({
+							invoiceNumber: invoice.ref,
+							dueDates: new Date(invoice.due_date).toLocaleDateString('fr-FR'),
+							company: invoice.company,
+						})) || [];
+
+					const formattedCompanies = response.companies?.map((company: Company) => ({
+						name: company.name,
+						tva: company.tva,
+						country: company.country,
+					}));
+
+					setContacts(formattedContacts);
+					setInvoices(formattedInvoices);
+					setCompanies(formattedCompanies);
+				}
+			} catch (error) {
+				console.error('Erreur lors de la récupération des données:', error);
+			}
+		};
 		fetchData();
 	}, []);
 
-	
+	useEffect(() => {
+		const userStr = localStorage.getItem('user');
+
+		const userData = userStr ? JSON.parse(userStr) : '';
+		setUser(userData);
+	}, []);
 
 	return (
 		<main className='dashboard_background'>
 			<div className='flex h-screen'>
-				<Dashboard_menu firstName={firstName} lastName={lastName} />
+				<Dashboard_menu firstName={user.first_name} lastName={user.last_name} />
 				<div className='flex-1 overflow-y-auto ml-[300px]'>
-					<Dashboard_header username={`${firstName}`} />
+					<Dashboard_header username={`${user.first_name}`} />
 					<div className='grid grid-cols-2 gap-8 z-30 px-12'>
 						<div className='flex flex-col gap-8'>
 							<Dashboard_stats stats={stats} />

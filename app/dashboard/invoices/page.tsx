@@ -14,17 +14,13 @@ export default function Dashboard_invoices() {
 		price: '',
 	});
 
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
+	const [user, setUser] = useState<{ first_name: string; last_name: string }>({ first_name: '', last_name: '' });
 
 	useEffect(() => {
-		const fetchUser = async () => {
-			const user = await axios.get('http://localhost:3000/api/users');
-			setFirstName(user.data[0].first_name);
-			setLastName(user.data[0].last_name);
-		};
+		const userStr = localStorage.getItem('user');
 
-		fetchUser();
+		const userData = userStr ? JSON.parse(userStr) : '';
+		setUser(userData);
 	}, []);
 
 	const handleChange = (name: string, value: string) => {
@@ -79,9 +75,9 @@ export default function Dashboard_invoices() {
 	return (
 		<main className=''>
 			<div className='flex'>
-				<Dashboard_menu firstName={firstName} lastName={lastName}  />
+				<Dashboard_menu firstName={user.first_name} lastName={user.last_name}  />
 				<div className='flex flex-col ml-[300px] w-full dashboard_background h-screen justify-center '>
-					<Dashboard_header username={firstName} />
+					<Dashboard_header username={user.first_name} />
 					<New_entry_form title='New Invoice' fields={['company', 'price', 'ref']} submitText='Create Invoice' onChange={handleChange} onSubmit={handleSubmit} placeholders={['Company', 'Price', 'Reference']} errorMessage={''} formData={formData} />
 					<ToastContainer/>
 				</div>
