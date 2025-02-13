@@ -27,7 +27,7 @@ export default function New_entry_form({ title, fields, submitText, placeholders
                                 id={field}
                                 value={formData[field] || ''}
                                 placeholder={placeholders[index]}
-                                onChange={(e) => onChange(field, e.target.value.toLowerCase())}
+                                onChange={(e) => onChange(field, e.target.value)}
                                 required />
                         </div>
                     );
