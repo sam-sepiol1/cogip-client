@@ -44,11 +44,13 @@ You can download it at [COGIP Backend Repository](https://github.com/sam-sepiol1
 ## Usage
 
 Once the development server is running, you can access the application in your web browser at `http://localhost:3001`.
+You'll be first redirected to the login page. If you're not authenticated, please create an account or log in using your credentials.
+You'll be redirected to the dashboard after a successful register/login.
 
 ## Disclaimer 
 
 This app is not deployed and was designed only for practice purposes.
-The Login and Signup functionalities are currently under development.
+
 
 Here's a few screenshots of the app:
 
