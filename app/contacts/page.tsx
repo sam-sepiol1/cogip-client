@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { checkAuth } from "../utils/checkAuth";
 
 import Header from "../components/Header";
 import DatasDisplayer from "../components/DatasDisplayer";
@@ -17,6 +18,7 @@ interface Contact {
 }
 
 export default function ContactsPage() {
+    checkAuth();
     const [contacts, setContacts] = useState<Contact[]>([]);
 
     useEffect(() => {

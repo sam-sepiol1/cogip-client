@@ -6,6 +6,7 @@ import axios from "axios";
 import Header from "../components/Header";
 import DatasDisplayer from "../components/DatasDisplayer";
 import Footer from "../components/Footer";
+import { checkAuth } from "../utils/checkAuth";
 
 interface Company {
     id: number;
@@ -17,6 +18,7 @@ interface Company {
 }
 
 export default function CompaniesPage() {
+    checkAuth();
     const [companies, setCompanies] = useState<Company[]>([]);
 
     useEffect(() => {

@@ -2,12 +2,14 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import { checkAuth } from '@/app/utils/checkAuth';
 
 import Dashboard_menu from '../../components/Dashboard_menu';
 import Dashboard_header from '../../components/Dashboard_header';
 import New_entry_form from '../../components/New_entry_form';
 
 export default function Dashboard_companies() {
+	checkAuth();
 	const companyTypes: Record<string, number> = {
 		'sarl': 1,
 		'sa': 2,

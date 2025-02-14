@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+import { checkAuth } from "./utils/checkAuth";
 
 import Home_header from "./components/Home_header";
 import DatasDisplayer from "./components/DatasDisplayer";
@@ -40,6 +41,7 @@ interface ApiResponse<T> {
 }
 
 export default function HomePage() {
+    checkAuth();
     const [invoices, setInvoices] = useState<Invoice[]>([]);
     const [contacts, setContacts] = useState<Contact[]>([]);
     const [companies, setCompanies] = useState<Company[]>([]);

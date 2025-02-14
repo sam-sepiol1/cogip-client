@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { checkAuth } from "../utils/checkAuth";
 
 import Header from "../components/Header";
 import DatasDisplayer from "../components/DatasDisplayer";
@@ -14,9 +15,11 @@ interface Invoice {
     id_company: number;
     created_at: string;
     company: string;
+
 }
 
 export default function InvoicePage() {
+    checkAuth();
     const [invoices, setInvoices] = useState<Invoice[]>([]);
 
     useEffect(() => {

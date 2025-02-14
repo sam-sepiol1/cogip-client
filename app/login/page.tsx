@@ -30,8 +30,8 @@ export default function Login() {
 
 			const token = response.data.data.token;
 			localStorage.setItem('token', token);
-			
-            const decodedToken = jwtDecode<{ user: string }>(token);
+
+			const decodedToken = jwtDecode<{ user: string }>(token);
 			const userData = decodedToken.user;
 			localStorage.setItem('user', JSON.stringify(userData));
 
@@ -48,8 +48,25 @@ export default function Login() {
 
 	return (
 		<main>
-			<Login_register_header />
-			<New_entry_form title='Please, Login to continue.' fields={['email', 'password']} onChange={handleChange} onSubmit={handleSubmitForm} submitText='Login' placeholders={['Email', 'Password']} errorMessage={error} formData={dto} />
+			<div>
+				<Login_register_header />
+				<New_entry_form
+					title='Please, Login to continue.'
+					fields={['email', 'password']}
+					onChange={handleChange}
+					onSubmit={handleSubmitForm}
+					submitText='Login'
+					placeholders={['Email', 'Password']}
+					errorMessage={error}
+					formData={dto}
+				/>
+				<div className='mb-12 flex flex-col align-center gap-4 w-[50%] mx-auto'>
+					<p className='text-center'>Dont have an account ?</p>
+					<button className='bg-[#9698D6] text-white p-4 w-[35%] self-center font-bold rounded-xl'>
+						<a href="/register"> Sign up</a>
+					</button>
+				</div>
+			</div>
 		</main>
 	);
 }

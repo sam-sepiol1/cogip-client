@@ -1,7 +1,10 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { checkAuth } from '../utils/checkAuth';
 
 export default function ShowContacts() {
+	checkAuth();
+
 	const testData = {
 		name: 'Sam Sepiol',
 		email: 'samsepiol@example.com',
